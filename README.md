@@ -152,7 +152,7 @@ Install this project with:
 - GitHub: [@cancelei](https://github.com/cancelei)
 - LinkedIn: [Glauber Bannwart](https://www.linkedin.com/in/gbannwart/)
 
-  👤 **Najibullah Jafari** Student-C
+👤 **Najibullah Jafari** Student-C
 
 - GitHub: [Najibullah_jafari](https://github.com/najibullahjafari)
 - Twitter: [Najibullah_jafari](https://twitter.com/Najib_Jafari_)
