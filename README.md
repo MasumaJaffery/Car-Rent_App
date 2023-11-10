@@ -141,22 +141,22 @@ Install this project with:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Najibullah Jafari**
-
-- GitHub: [Najibullah_jafari](https://github.com/najibullahjafari)
-- Twitter: [Najibullah_jafari](https://twitter.com/Najib_Jafari_)
-- LinkedIn: [Najibullah_jafari](https://www.linkedin.com/in/najibulla-jafari-609852263/)
-
-👤 **Syeda Masuma Fatima**
+👤 **Syeda Masuma Fatima** Student-A
 
 - GitHub: [@MasumaJaffery](https://github.com/MasumaJaffery)
 - Twitter: [@MasumaJaffery](https://twitter.com/MasumaJaffery)
 - LinkedIn: [Masuma Jaffery](https://www.linkedin.com/in/masuma-jaffery-797a29256/)
 
-👤 **Glauber Bannwart**
+👤 **Glauber Bannwart** Student-B
 
 - GitHub: [@cancelei](https://github.com/cancelei)
 - LinkedIn: [Glauber Bannwart](https://www.linkedin.com/in/gbannwart/)
+
+  👤 **Najibullah Jafari** Student-C
+
+- GitHub: [Najibullah_jafari](https://github.com/najibullahjafari)
+- Twitter: [Najibullah_jafari](https://twitter.com/Najib_Jafari_)
+- LinkedIn: [Najibullah_jafari](https://www.linkedin.com/in/najibulla-jafari-609852263/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
