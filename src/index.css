@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Russo+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 .logo {
   margin-bottom: 50%;
@@ -37,7 +37,7 @@ li {
 .list:hover,
 .list:active {
   background-color: #98be11;
-  color: #ffffff;
+  color: #fff;
 }
 
 .control-dots {
@@ -52,8 +52,8 @@ li {
 }
 
 .copywrite {
-font-size: small;
-padding: 5%;
+  font-size: small;
+  padding: 5%;
 }
 
 .Heading {
@@ -78,7 +78,7 @@ padding: 5%;
   font-weight: 700;
 }
 
-.logo2{
+.logo2 {
   border: 1px solid #b1a9a9;
   border-radius: 50%;
   padding: 2%;
@@ -100,7 +100,7 @@ padding: 5%;
   height: 20%;
   border-radius: 50% 0 0 50%;
   position: absolute;
-  top: 4rem
+  top: 4rem;
 }
 
 .control-prev {
