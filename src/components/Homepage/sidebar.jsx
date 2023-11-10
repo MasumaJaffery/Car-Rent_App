@@ -1,5 +1,5 @@
 import React from 'react';
-import Icons from './icons';
+import Icons from '../Homepage/icons';
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
