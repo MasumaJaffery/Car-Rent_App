@@ -1,5 +1,5 @@
 import React from 'react';
-import Icons from './icons';
+import Icons from '../Homepage/icons';
 
 const Sidebar = () => (
   <div className="sidebar w-[15vw]">
