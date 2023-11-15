@@ -1,11 +1,11 @@
 import React from 'react';
 import Carousel from './carousel';
-import Navigation from '../Navigation';
+import Sidebar from './sidebar';
 
 function Home() {
   return (
     <div className="App flex">
-      <Navigation />
+      <Sidebar />
       <Carousel />
     </div>
   );
