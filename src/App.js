@@ -1,13 +1,21 @@
-import React from 'react';
-import './App.css';
-import Home from './components/Homepage/homepage';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import AddItemForm from "./components/forms/AddItemForm";
+import ReserveAppointmentForm from "./components/forms/ReserveAppointmentForm";
 
-function App() {
-  return (
-    <div className="App">
-      <Home />
+const App = () => (
+  <Router>
+    <div>
+      <Navbar />
+      <homepage />
+      <Routes>
+        <Route path="/add" component={AddItemForm} />
+        <Route path="/reserve" component={ReserveAppointmentForm} />
+        {/* Add other routes as needed */}
+      </Routes>
     </div>
-  );
-}
+  </Router>
+);
 
 export default App;
