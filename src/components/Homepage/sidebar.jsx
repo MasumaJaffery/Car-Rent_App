@@ -40,12 +40,12 @@ const Sidebar = () => {
       >
         <li className="list">
           <a href="#models" onClick={handleLogoClick}>
-            Reserve
+            My Reservations
           </a>
         </li>
         <li className="list">
           <a href="#lifestyle" onClick={handleLogoClick}>
-            My Reservations
+            Reservations
           </a>
         </li>
         <li className="list">
@@ -55,7 +55,7 @@ const Sidebar = () => {
         </li>
         <li className="list">
           <button type="button" onClick={handleReserveClick}>
-            Reserve Appointments
+            Reserve
           </button>
         </li>
       </ul>
