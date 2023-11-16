@@ -14,7 +14,7 @@ const ReserveAppointmentForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md"
+      className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md"
     >
       <label className="block mb-2">
         Full Name:

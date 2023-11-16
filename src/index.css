@@ -105,10 +105,15 @@ li {
 }
 
 /* //////////=================/////////// */
+
 /* ///////// Sidebar style   /////////// */
+
 /* ////////================/////////// */
 
 .sidebar {
+  height: 100vh;
+  border-right: 3px solid rgb(201, 201, 201);
+
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
@@ -132,13 +137,13 @@ li {
         margin-bottom: 15px;
       }
     }
+
+    .logo1 {
+      display: none;
+    }
   }
 }
 
-.sidebar {
-  height: 100vh;
-  border-right: 3px solid rgb(201, 201, 201);
-}
 .hamburger-menu {
   display: none;
   font-size: 24px;
@@ -153,7 +158,9 @@ li {
 }
 
 /* //////////=================/////////// */
+
 /* ///////// Form style     /////////// */
+
 /* ////////================/////////// */
 
 .add_item_submit_btn,
