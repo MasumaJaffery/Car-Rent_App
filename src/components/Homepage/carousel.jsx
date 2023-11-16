@@ -53,7 +53,7 @@ const MyCarousel = () => (
             </div>
           </div>
           <div>
-            <img src={Car2} alt="Car Rental5" className="w-full md:w-50 object-cover" />
+            <img src={Car2} alt="Car Rental 5" className="w-full md:w-50 object-cover" />
             <div className="detials">
               <h5 className="title">Audi</h5>
               <p>...</p>

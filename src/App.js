@@ -1,12 +1,18 @@
 import React from 'react';
-import './App.css';
-import Home from './components/Homepage/homepage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SignInForm from './components/Deviseforms/signin';
+import SignUpForm from './components/Deviseforms/signup';
+import Homepage from './components/Homepage/homepage';
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/signin" element={<SignInForm />} />
+        <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/" element={<Homepage />} />
+      </Routes>
+    </Router>
   );
 }
 
