@@ -1,7 +1,4 @@
 import React from 'react';
-// Import your abstracted components if needed. For example:
-// import Dropdown from './Dropdown';
-// import Button from './Button';
 import backgroundImage from './reservationpage_bgimag.png';
 
 const ReserveComponent = () => (
@@ -9,7 +6,11 @@ const ReserveComponent = () => (
     {/* Background image with overlay */}
     <div
       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        // Add an empty alt attribute or a comment
+        alt: '',
+      }}
     >
       {/* Overlay with opacity, adjust the color and opacity as needed */}
       <div className="absolute inset-0 bg-lime-400 opacity-50" />
@@ -20,9 +21,9 @@ const ReserveComponent = () => (
       <h1 className="text-4xl font-bold mb-4 mt-3">BOOK A CAR TEST-RIDE</h1>
       <p className="mb-3 mt-10">
         There are 34 different cars in Super Cars of the Vespa. Today five
-        categories are in display: the classic manual transmissio and the modern
-        CVT transmission S, LX, GT, and GTS. We have showrooms all over the
-        globe which some include test-riding facilities.
+        categories are in display: the classic manual transmission and the
+        modern CVT transmission S, LX, GT, and GTS. We have showrooms all over
+        the globe which some include test-riding facilities.
       </p>
       <p className="mb-6">
         If you wish to find out if a test-ride is available in your area, please
@@ -31,7 +32,7 @@ const ReserveComponent = () => (
 
       <form className="flex flex-col items-center">
         <div className="mb-6 w-full">
-          <label htmlFor="locationSelector" className="block mb-2">
+          <label htmlFor="usernameSelector" className="block mb-2">
             Your Username for this booking:
           </label>
 
