@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
-import Sidebar from '../Shared/sidebar';
+import React from 'react';
 import Carousel from './carousel';
 
 function Home() {
-  const [isCarouselVisible, setCarouselVisible] = useState(true);
-
-  const handleSidebarItemClick = (component) => {
-    setCarouselVisible(component === 'carousel');
-  };
-
   return (
     <div className="App flex">
-      <Sidebar onSidebarItemClick={handleSidebarItemClick} />
-      {isCarouselVisible && <Carousel />}
+      <Carousel />
     </div>
   );
 }
