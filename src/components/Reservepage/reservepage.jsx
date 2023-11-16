@@ -1,14 +1,14 @@
 import React from 'react';
 import Sidebar from '../Shared/sidebar';
-import Carousel from './carousel';
+import Reservecomponent from './reservecomponent';
 
-function Home() {
+function Reservepage() {
   return (
     <div className="App flex">
       <Sidebar />
-      <Carousel />
+      <Reservecomponent />
     </div>
   );
 }
 
-export default Home;
+export default Reservepage;

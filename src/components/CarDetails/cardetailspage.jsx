@@ -1,14 +1,14 @@
 import React from 'react';
 import Sidebar from '../Shared/sidebar';
-import Carousel from './carousel';
+import CarDetails from './CarDetails';
 
-function Home() {
+function CarDetailsPage() {
   return (
     <div className="App flex">
       <Sidebar />
-      <Carousel />
+      <CarDetails />
     </div>
   );
 }
 
-export default Home;
+export default CarDetailsPage;

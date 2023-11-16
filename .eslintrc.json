@@ -19,10 +19,15 @@
       "react/react-in-jsx-scope": "off",
       "import/no-unresolved": "off",
       "no-shadow": "off",
-      "jsx-a11y/label-has-associated-control": "off"
+      "jsx-a11y/label-has-associated-control": [ 2, {
+        "controlComponents": ["Input", "Select", "Textarea"],
+        "depth": 3
+      }]
     },
     "ignorePatterns": [
       "dist/",
       "build/"
     ]
-  }
+  },
+  "ignorePatterns": ["dist/", "build/"]
+}
