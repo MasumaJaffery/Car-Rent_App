@@ -7,29 +7,43 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      if (!email || !password) {
+        setError('Email and password are required');
+        return;
+      }
+  
       const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          user: {
+            email,
+            password,
+          }
+        }),
       });
-
+  
       if (response.ok) {
         const user = await response.json();
         dispatch(loginSuccess({ user }));
         console.log('Login!');
       } else {
         dispatch(loginFailure());
+        setError('Login failed');
       }
     } catch (error) {
       dispatch(loginFailure());
+      setError('An error occurred');
     }
   };
+  
 
   return (
     <div
@@ -69,6 +83,9 @@ const SignIn = () => {
                 placeholder="Password"
               />
             </label>
+            {error && (
+              <div className="text-red-500">{error}</div>
+            )}
           </div>
 
           <div className="mt-6">
