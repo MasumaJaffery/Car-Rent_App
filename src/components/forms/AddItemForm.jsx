@@ -14,7 +14,7 @@ const CarSellingForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md"
+      className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md"
     >
       <label className="block mb-2">
         Finance Fee:
@@ -22,7 +22,7 @@ const CarSellingForm = () => {
           type="text"
           value={financeFee}
           onChange={(e) => setFinanceFee(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
 
@@ -32,7 +32,7 @@ const CarSellingForm = () => {
           type="text"
           value={purchaseFee}
           onChange={(e) => setPurchaseFee(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
 
@@ -42,7 +42,7 @@ const CarSellingForm = () => {
           type="text"
           value={totalAmountPayable}
           onChange={(e) => setTotalAmountPayable(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
 
@@ -52,13 +52,13 @@ const CarSellingForm = () => {
           type="text"
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
 
       <button
         type="submit"
-        className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+        className="w-full bg-lime-500 text-white py-2 px-4 rounded-md hover:bg-lime-700 focus:outline-none  "
       >
         Submit
       </button>
