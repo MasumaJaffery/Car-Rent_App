@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import UI from '../../images/UI-Masuma.png';
 import { loginSuccess, loginFailure } from '../../redux/slices/authSlice';
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,8 +18,8 @@ const SignIn = () => {
         setError('Email and password are required');
         return;
       }
-  
-      const response = await fetch('http://localhost:3000/login', {
+
+      const response = await fetch('http://localhost:4000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,14 +28,15 @@ const SignIn = () => {
           user: {
             email,
             password,
-          }
+          },
         }),
       });
-  
+
       if (response.ok) {
         const user = await response.json();
         dispatch(loginSuccess({ user }));
         console.log('Login!');
+        navigate('/');
       } else {
         dispatch(loginFailure());
         setError('Login failed');
@@ -43,7 +46,6 @@ const SignIn = () => {
       setError('An error occurred');
     }
   };
-  
 
   return (
     <div
