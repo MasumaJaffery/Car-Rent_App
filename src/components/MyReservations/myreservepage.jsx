@@ -1,12 +1,10 @@
 import React from 'react';
-import Sidebar from '../Shared/sidebar';
-import ReserveComponent from '../Reservepage/reservecomponent';
+import MyReserveComponent from './myreservecomponent';
 
 function Reservepage() {
   return (
     <div className="App flex">
-      <Sidebar />
-      <ReserveComponent />
+      <MyReserveComponent />
     </div>
   );
 }

@@ -29,49 +29,9 @@ const ReserveComponent = () => (
         If you wish to find out if a test-ride is available in your area, please
         use the selector below.
       </p>
-
-      <form className="flex flex-col items-center">
-        <div className="mb-6 w-full">
-          <label htmlFor="usernameSelector" className="block mb-2">
-            Your Username for this booking:
-          </label>
-
-          <select
-            id="usernameSelector"
-            name="username"
-            className="form-select bg-white/70 text-gray-700 border border-gray-300 rounded p-2 w-48 focus:border-blue-500 focus:outline-none focus:ring"
-          >
-            <option value="username">Username</option>
-            {/* Add other options here */}
-          </select>
-        </div>
-
-        <div className="mb-6 w-full">
-          <label htmlFor="locationSelector" className="block mb-2">
-            Choose a location:
-          </label>
-
-          <select
-            id="locationSelector"
-            name="location"
-            className="form-select bg-white/70 text-gray-700 border border-gray-300 rounded p-2 w-48 focus:border-blue-500 focus:outline-none focus:ring"
-          >
-            <option value="london">London</option>
-            <option value="milano">Milano</option>
-            <option value="paris">Paris</option>
-            <option value="newyork">New York</option>
-            {/* Add other options here */}
-          </select>
-        </div>
-
-        <button
-          type="submit"
-          className="bg-yellow-400 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded w-36"
-        >
-          Book Now
-        </button>
-      </form>
     </div>
+
+    {/* Form for new reservation booking goes here  */}
   </div>
 );
 

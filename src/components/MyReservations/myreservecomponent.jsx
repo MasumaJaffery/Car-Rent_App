@@ -1,55 +1,57 @@
-import React from 'react';
-// Import your abstracted components if needed. For example:
-// import Dropdown from './Dropdown';
-// import Button from './Button';
+import React, { useState, useEffect } from 'react';
 import backgroundImage from './reservationpage_bgimag.png';
 
-const ReserveComponent = () => (
-  <div className="relative text-white p-8 h-screen">
-    {/* Background image with overlay */}
-    <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      {/* Overlay with opacity, adjust the color and opacity as needed */}
-      <div className="absolute inset-0 bg-lime-400 opacity-50" />
-    </div>
+const MyReserveComponent = () => {
+  const [reservations, setReservations] = useState([]);
 
-    {/* Content container */}
-    <div className="relative z-10">
-      <h1 className="text-4xl font-bold mb-4 mt-3">BOOK A CAR TEST-RIDE</h1>
-      <p className="mb-3 mt-10">There are 34 different cars in Super Cars of the Vespa. Today five categories are in display: the classic manual transmissio and the modern CVT transmission S, LX, GT, and GTS. We have showrooms all over the globe which some include test-riding facilities.</p>
-      <p className="mb-6">If you wish to find out if a test-ride is available in your area, please use the selector below.</p>
+  useEffect(() => {
+    const mockReservations = [
+      {
+        id: 1, carName: 'Tesla Model S', reservationDate: '2023-01-15', city: 'New York',
+      },
+      {
+        id: 2, carName: 'BMW i8', reservationDate: '2023-02-20', city: 'Los Angeles',
+      },
+      // ... more mock reservations
+    ];
+    setReservations(mockReservations);
+  }, []);
 
-      <form className="flex flex-col items-center">
-        <div className="mb-6 w-full">
-          <label htmlFor="locationSelector" className="block mb-2">
-            Your Username for this booking:
-          </label>
+  return (
+    <div className="relative text-white p-8 h-screen">
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${backgroundImage})` }}>
+        <div className="absolute inset-0 bg-lime-400 opacity-50" />
+      </div>
 
-          <select id="usernameSelector" name="username" className="form-select bg-white/70 text-gray-700 border border-gray-300 rounded p-2 w-48 focus:border-blue-500 focus:outline-none focus:ring">
-            <option value="username">Username</option>
-            {/* Add other options here */}
-          </select>
+      <div className="relative z-10">
+        <h1 className="text-4xl font-bold mb-4 mt-3">My Reservations</h1>
+        <p className="mb-3 mt-10">Here you can view details of current, future and past reservations.</p>
+        <p className="mb-6">Remember to review your last reservation, so we can improve our services.</p>
+
+        {/* Table for Reservations */}
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full">
+            <thead>
+              <tr className="bg-gray-700">
+                <th className="px-4 py-2">Car Name</th>
+                <th className="px-4 py-2">Reservation Date</th>
+                <th className="px-4 py-2">City</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reservations.map((reservation) => (
+                <tr key={reservation.id} className="bg-gray-800 border-b border-gray-700">
+                  <td className="px-4 py-2">{reservation.carName}</td>
+                  <td className="px-4 py-2">{reservation.reservationDate}</td>
+                  <td className="px-4 py-2">{reservation.city}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-        <div className="mb-6 w-full">
-          <label htmlFor="locationSelector" className="block mb-2">
-            Choose a location:
-          </label>
-
-          <select id="locationSelector" name="location" className="form-select bg-white/70 text-gray-700 border border-gray-300 rounded p-2 w-48 focus:border-blue-500 focus:outline-none focus:ring">
-            <option value="london">London</option>
-            <option value="milano">Milano</option>
-            <option value="paris">Paris</option>
-            <option value="newyork">New York</option>
-            {/* Add other options here */}
-          </select>
-        </div>
-
-        <button type="submit" className="bg-yellow-400 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded w-36">
-          Book Now
-        </button>
-      </form>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-export default ReserveComponent;
+export default MyReserveComponent;
