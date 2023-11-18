@@ -10,21 +10,17 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       if (password.trim() === '') {
         setError("Password can't be blank");
         return;
       }
-
       if (password !== confirmPassword) {
         setError('Passwords do not match');
         return;
       }
-
       const dataToSend = {
         user: {
           name,
@@ -32,7 +28,6 @@ const SignUpForm = () => {
           password,
         },
       };
-
       const response = await axios.post(
         'http://127.0.0.1:4000/api/v1/users',
         dataToSend,
@@ -42,10 +37,8 @@ const SignUpForm = () => {
           },
         },
       );
-
       console.log('Response:', response.data);
-      navigate('/login');
-
+      navigate('/');
       // Reset form fields
       setName('');
       setEmail('');
@@ -64,7 +57,6 @@ const SignUpForm = () => {
       }
     }
   };
-
   return (
     <div
       className="bg-gray-100 min-h-screen flex items-center justify-center"
@@ -92,7 +84,6 @@ const SignUpForm = () => {
               />
             </label>
           </div>
-
           <div>
             <label
               htmlFor="email"
@@ -109,7 +100,6 @@ const SignUpForm = () => {
               />
             </label>
           </div>
-
           <div>
             <label
               htmlFor="password"
@@ -128,7 +118,6 @@ const SignUpForm = () => {
             </label>
             {error && <div className="text-red-500">{error}</div>}
           </div>
-
           <div>
             <label
               htmlFor="confirmPassword"
@@ -146,7 +135,6 @@ const SignUpForm = () => {
             </label>
             {error && <div className="text-red-500">{error}</div>}
           </div>
-
           <div className="mt-6">
             <button
               type="submit"
@@ -160,5 +148,4 @@ const SignUpForm = () => {
     </div>
   );
 };
-
 export default SignUpForm;
