@@ -40,7 +40,7 @@ const SignUpForm = () => {
       });
 
       console.log('Response:', response.data);
-      navigate('/');
+      navigate('/Homepage');
 
       // Reset form fields
       setName('');

@@ -15,7 +15,7 @@ function Splash() {
           <a href="http://127.0.0.1:3000/signup" className="bg-lime-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300">
             Sign Up
           </a>
-          <a href="http://127.0.0.1:3000/signin" className="bg-lime-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300">
+          <a href="http://127.0.0.1:3000/login" className="bg-lime-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300">
             Sign In
           </a>
         </div>
