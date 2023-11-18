@@ -21,7 +21,11 @@ const MyCarousel = () => (
           centerSlidePercentage={40}
         >
           <div>
-            <img src={Car1} alt="Car Rental 1" className="w-full md:w-1/2 object-cover" />
+            <img
+              src={Car1}
+              alt="Car Rental 1"
+              className="w-full md:w-1/2 object-cover"
+            />
             <div className="detials">
               <h5 className="title">Audi</h5>
               <p>...</p>
@@ -29,7 +33,11 @@ const MyCarousel = () => (
             </div>
           </div>
           <div>
-            <img src={Car2} alt="Car Rental 2" className="w-full md:w-50 object-cover" />
+            <img
+              src={Car2}
+              alt="Car Rental 2"
+              className="w-full md:w-50 object-cover"
+            />
             <div className="detials">
               <h5 className="title">Audi</h5>
               <p>...</p>
@@ -37,7 +45,11 @@ const MyCarousel = () => (
             </div>
           </div>
           <div>
-            <img src={Car3} alt="Car Rental 3" className="w-full md:w-50 object-cover" />
+            <img
+              src={Car3}
+              alt="Car Rental 3"
+              className="w-full md:w-50 object-cover"
+            />
             <div className="detials">
               <h5 className="title">Audi</h5>
               <p>...</p>
@@ -45,7 +57,11 @@ const MyCarousel = () => (
             </div>
           </div>
           <div>
-            <img src={Car1} alt="Car Rental 4" className="w-full md:w-50 object-cover" />
+            <img
+              src={Car1}
+              alt="Car Rental 4"
+              className="w-full md:w-50 object-cover"
+            />
             <div className="detials">
               <h5 className="title">Audi</h5>
               <p>...</p>
@@ -53,7 +69,11 @@ const MyCarousel = () => (
             </div>
           </div>
           <div>
-            <img src={Car2} alt="Car Rental 5" className="w-full md:w-50 object-cover" />
+            <img
+              src={Car2}
+              alt="Car Rental5"
+              className="w-full md:w-50 object-cover"
+            />
             <div className="detials">
               <h5 className="title">Audi</h5>
               <p>...</p>

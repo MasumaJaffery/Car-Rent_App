@@ -4,18 +4,43 @@ import SignInForm from './components/Deviseforms/signin';
 import SignUpForm from './components/Deviseforms/signup';
 import Homepage from './components/Homepage/homepage';
 import Splash from './components/Shared/splash';
+import AddItemForm from './components/forms/AddItemForm';
+import Home from './components/Homepage/homepage';
+import Sidebar from './components/Shared/sidebar';
+import CarDetailsPage from './components/CarDetails/cardetailspage';
+import ReserveAppointmentForm from './components/forms/ReserveAppointmentForm';
 
-function App() {
-  return (
-    <Router>
+
+const App = () => (
+  <Router>
+    <div className="App flex">
       <Routes>
+
         <Route path="/signin" element={<SignInForm />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/Homepage" element={<Homepage />} />
         <Route path="/" element={<Splash />} />
+
+        <Route
+          path="/*"
+          element={
+            <>
+              <Sidebar />
+              <div className="content">
+                <Routes>
+                  <Route index element={<Home />} />
+                  <Route path="/add" element={<AddItemForm />} />
+                  <Route path="/reserve" element={<ReserveAppointmentForm />} />
+                  <Route path="/car/:id" element={<CarDetailsPage />} />
+                  {/* Add other routes as needed */}
+                </Routes>
+              </div>
+            </>
+          }
+        />
       </Routes>
-    </Router>
-  );
-}
+    </div>
+  </Router>
+);
 
 export default App;
