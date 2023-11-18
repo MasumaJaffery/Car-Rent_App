@@ -1,33 +1,49 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import UI from '../../images/UI-Masuma.png';
 import { loginSuccess, loginFailure } from '../../redux/slices/authSlice';
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      if (!email || !password) {
+        setError('Email and password are required');
+        return;
+      }
+
+      const response = await fetch('http://localhost:4000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          user: {
+            email,
+            password,
+          },
+        }),
       });
 
       if (response.ok) {
         const user = await response.json();
         dispatch(loginSuccess({ user }));
         console.log('Login!');
+        navigate('/');
       } else {
         dispatch(loginFailure());
+        setError('Login failed');
       }
     } catch (error) {
       dispatch(loginFailure());
+      setError('An error occurred');
     }
   };
 
@@ -69,6 +85,9 @@ const SignIn = () => {
                 placeholder="Password"
               />
             </label>
+            {error && (
+              <div className="text-red-500">{error}</div>
+            )}
           </div>
 
           <div className="mt-6">
