@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const CarSellingForm = () => {
   const [financeFee, setFinanceFee] = useState('');
@@ -7,10 +8,28 @@ const CarSellingForm = () => {
   const [duration, setDuration] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here, including selectedFile if needed
-    // console.log('Form submitted with selected file:', selectedFile);
+
+    try {
+      const formData = new FormData();
+      formData.append('name', financeFee);
+      formData.append('description', purchaseFee);
+      formData.append('category', totalAmountPayable);
+      formData.append('added_by', duration);
+      formData.append('picture', selectedFile);
+
+      await axios.post('http://your-rails-api-url/cars', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // Handle success or redirect as needed
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Handle error
+    }
   };
 
   const handleFileChange = (e) => {
@@ -25,7 +44,7 @@ const CarSellingForm = () => {
       className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md"
     >
       <label className="block mb-2">
-        Finance Fee:
+        Name:
         <input
           type="text"
           value={financeFee}
@@ -35,7 +54,7 @@ const CarSellingForm = () => {
       </label>
 
       <label className="block mb-2">
-        Purchase Fee:
+        Description:
         <input
           type="text"
           value={purchaseFee}
@@ -45,7 +64,7 @@ const CarSellingForm = () => {
       </label>
 
       <label className="block mb-2">
-        Total Amount Payable:
+        Category:
         <input
           type="text"
           value={totalAmountPayable}
@@ -55,7 +74,7 @@ const CarSellingForm = () => {
       </label>
 
       <label className="block mb-2">
-        Duration:
+        Added by:
         <input
           type="text"
           value={duration}
