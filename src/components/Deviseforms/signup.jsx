@@ -35,7 +35,7 @@ const SignUpForm = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-        },
+        }
       );
       console.log('Response:', response.data);
       navigate('/');
@@ -47,9 +47,9 @@ const SignUpForm = () => {
       setError('');
     } catch (error) {
       if (
-        error.response
-        && error.response.data
-        && error.response.data.message[0]
+        error.response &&
+        error.response.data &&
+        error.response.data.message[0]
       ) {
         setError(error.response.data.message[0]);
       } else {
