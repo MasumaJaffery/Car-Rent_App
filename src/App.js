@@ -1,16 +1,26 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SignInForm from './components/Deviseforms/signin';
+import SignUpForm from './components/Deviseforms/signup';
+import Homepage from './components/Homepage/homepage';
+import Splash from './components/Shared/splash';
 import AddItemForm from './components/forms/AddItemForm';
 import Home from './components/Homepage/homepage';
 import Sidebar from './components/Shared/sidebar';
 import CarDetailsPage from './components/CarDetails/cardetailspage';
-// import Reservepage from './components/Reservepage/reservepage';
 import ReserveAppointmentForm from './components/forms/ReserveAppointmentForm';
+
 
 const App = () => (
   <Router>
     <div className="App flex">
       <Routes>
+
+        <Route path="/signin" element={<SignInForm />} />
+        <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/Homepage" element={<Homepage />} />
+        <Route path="/" element={<Splash />} />
+
         <Route
           path="/*"
           element={
