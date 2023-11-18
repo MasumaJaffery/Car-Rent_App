@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -11,10 +11,20 @@ import Sidebar from './components/Shared/sidebar';
 import CarDetailsPage from './components/CarDetails/cardetailspage';
 import ReserveAppointmentForm from './components/forms/ReserveAppointmentForm';
 import SignUpForm from './components/Deviseforms/signup';
+import SignIn from './components/Deviseforms/signin';
 
 const App = () => {
+  const [justSignedUp, setJustSignedUp] = useState(false);
+
   // Check if the user is authenticated (you need to implement this logic)
   const isAuthenticated = false; // Replace this with your actual authentication logic
+
+  // Use useEffect to handle redirection after signup
+  useEffect(() => {
+    if (justSignedUp) {
+      setJustSignedUp(false);
+    }
+  }, [justSignedUp]);
 
   return (
     <Router>
@@ -40,12 +50,16 @@ const App = () => {
                     </div>
                   </>
                 ) : (
-                  <Navigate to="/signup" />
+                  <Navigate to={justSignedUp ? '/login' : '/signup'} />
                 )}
               </>
             }
           />
-          <Route path="/signup" element={<SignUpForm />} />
+          <Route
+            path="/signup"
+            element={<SignUpForm setJustSignedUp={setJustSignedUp} />}
+          />
+          <Route path="/login" element={<SignIn />} />
         </Routes>
       </div>
     </Router>
