@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const ReserveAppointmentForm = () => {
   const [fullName, setFullName] = useState('');
@@ -6,9 +7,29 @@ const ReserveAppointmentForm = () => {
   const [phone, setPhone] = useState('');
   const [appointmentDate, setAppointmentDate] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+
+    const formData = {
+      fullName,
+      email,
+      phone,
+      appointmentDate,
+    };
+
+    try {
+      const response = await axios.post('http://localhost:4000/api/v1/reserve', formData);
+      console.log('Reservation submitted:', response.data);
+      // Perform additional actions here, such as showing a success message
+    } catch (error) {
+      console.error('Error submitting reservation:', error);
+    }
+
+    localStorage.removeItem('reservationFormData');
+    setFullName('');
+    setEmail('');
+    setPhone('');
+    setAppointmentDate('');
   };
 
   return (
