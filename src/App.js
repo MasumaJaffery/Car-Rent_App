@@ -5,11 +5,9 @@ import SignUpForm from './components/Deviseforms/signup';
 import Homepage from './components/Homepage/homepage';
 import Splash from './components/Shared/splash';
 import AddItemForm from './components/forms/AddItemForm';
-import Home from './components/Homepage/homepage';
 import Sidebar from './components/Shared/sidebar';
 import CarDetailsPage from './components/CarDetails/cardetailspage';
 import ReserveAppointmentForm from './components/forms/ReserveAppointmentForm';
-
 
 const App = () => (
   <Router>
@@ -28,7 +26,7 @@ const App = () => (
               <Sidebar />
               <div className="content">
                 <Routes>
-                  <Route index element={<Home />} />
+                  <Route index element={<Homepage />} />
                   <Route path="/add" element={<AddItemForm />} />
                   <Route path="/reserve" element={<ReserveAppointmentForm />} />
                   <Route path="/car/:id" element={<CarDetailsPage />} />
