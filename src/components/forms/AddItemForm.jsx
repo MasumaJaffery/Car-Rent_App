@@ -1,65 +1,114 @@
-import React, { useState } from 'react';
+// CarSellingForm.js
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const CarSellingForm = () => {
-  const [financeFee, setFinanceFee] = useState('');
-  const [purchaseFee, setPurchaseFee] = useState('');
-  const [totalAmountPayable, setTotalAmountPayable] = useState('');
-  const [duration, setDuration] = useState('');
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [formData, setFormData] = useState(() => {
+    const savedFormData = localStorage.getItem('carFormData');
+    return savedFormData
+      ? JSON.parse(savedFormData)
+      : {
+        name: '',
+        description: '',
+        price: '',
+        city: '',
+        image: '',
+      };
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here, including selectedFile if needed
-    // console.log('Form submitted with selected file:', selectedFile);
+  useEffect(() => {
+    localStorage.setItem('carFormData', JSON.stringify(formData));
+  }, [formData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const handleFileChange = (e) => {
-    // Handle file selection logic here
     const file = e.target.files[0];
-    setSelectedFile(file);
+    setFormData({
+      ...formData,
+      image: file,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('description', formData.description);
+    formDataToSend.append('price', formData.price);
+    formDataToSend.append('city', formData.city);
+    formDataToSend.append('image', formData.image);
+
+    try {
+      const response = await axios.post('http://localhost:4000/api/v1/items', formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      console.log('Item created:', response.data);
+      setFormData({
+        name: '',
+        description: '',
+        price: '',
+        city: '',
+        image: null,
+      });
+      localStorage.removeItem('carFormData');
+    } catch (error) {
+      console.error('Error creating item:', error);
+    }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md"
-    >
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
       <label className="block mb-2">
-        Finance Fee:
+        Name:
         <input
           type="text"
-          value={financeFee}
-          onChange={(e) => setFinanceFee(e.target.value)}
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
 
       <label className="block mb-2">
-        Purchase Fee:
-        <input
-          type="text"
-          value={purchaseFee}
-          onChange={(e) => setPurchaseFee(e.target.value)}
+        Description:
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
 
       <label className="block mb-2">
-        Total Amount Payable:
+        Price:
         <input
           type="text"
-          value={totalAmountPayable}
-          onChange={(e) => setTotalAmountPayable(e.target.value)}
+          name="price"
+          value={formData.price}
+          onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
 
       <label className="block mb-2">
-        Duration:
+        City:
         <input
           type="text"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
@@ -68,15 +117,10 @@ const CarSellingForm = () => {
         Upload Picture:
         <input
           type="file"
+          name="image"
           onChange={handleFileChange}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
-        {selectedFile && (
-          <p className="mt-2 text-sm text-gray-500">
-            Selected File:
-            {selectedFile.name}
-          </p>
-        )}
       </label>
 
       <button

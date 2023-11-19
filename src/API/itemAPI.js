@@ -4,7 +4,6 @@ const itemAPI = {
   logout: 'logout',
   registration: 'api/v1/users',
   allUsers: 'api/v1/users',
-  listItems: 'api/v1/items',
   listReserves: 'api/v1/users/',
   deleteItems: 'api/v1/items',
 };
