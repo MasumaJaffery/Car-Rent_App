@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import { useDispatch } from 'react-redux';
-import { useAuth } from '../Shared/AuthContext';
+import { useDispatch } from 'react-redux';
+import { useAuth } from '../Shared/AuthContext'; // Adjust the import path
 
 const CarSellingForm = () => {
   const auth = useAuth();
   const { user } = auth;
-  // const dispatch = useDispatch(); // Commented out as it's not used
+  const dispatch = useDispatch();
   if (!user) {
     // Handle the case when the user is not authenticated
     console.log('no userrrrrrrrrrrrrr!!');
@@ -153,5 +153,9 @@ const CarSellingForm = () => {
     </form>
   );
 };
+
+// CarSellingForm.propTypes = {
+//   // Add any prop types if needed
+// };
 
 export default CarSellingForm;
