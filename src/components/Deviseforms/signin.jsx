@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import UI from '../../images/UI-Masuma.png';
 import { loginSuccess, loginFailure } from '../../redux/slices/authSlice';
+import { setToken } from '../../redux/slices/tokenSlice';
+
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const token = useSelector(state => state.token.token);
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch('http://localhost:4000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
       });
+       
 
       if (response.ok) {
-        const user = await response.json();
-        dispatch(loginSuccess({ user }));
-        console.log('Login!');
-      } else {
-        dispatch(loginFailure());
-      }
+  const { token } = await response.json();
+  dispatch(setToken(token)); // Dispatch the setToken action with the obtained token
+  dispatch(loginSuccess({ user }));
+  console.log('Login!');
+} else {
+  dispatch(loginFailure());
+}
     } catch (error) {
       dispatch(loginFailure());
     }
