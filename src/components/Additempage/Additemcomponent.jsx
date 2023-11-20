@@ -1,12 +1,12 @@
 import React from 'react';
 import backgroundImage from './reservationpage_bgimag.png';
-import ReserveAppointmentForm from '../forms/ReserveAppointmentForm';
+import CarSellingForm from '../forms/AddItemForm';
 
-const ReserveComponent = () => (
+const AdditemComponent = () => (
   <div className="relative text-white p-8 h-screen">
     {/* Background image with overlay */}
     <div
-      className="relative h-80 inset-0 bg-cover bg-center bg-no-repeat"
+      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         // Add an empty alt attribute or a comment
@@ -30,11 +30,13 @@ const ReserveComponent = () => (
         If you wish to find out if a test-ride is available in your area, please
         use the selector below.
       </p>
-      <ReserveAppointmentForm />
+
+      <CarSellingForm />
     </div>
 
     {/* Form for new reservation booking goes here  */}
+
   </div>
 );
 
-export default ReserveComponent;
+export default AdditemComponent;

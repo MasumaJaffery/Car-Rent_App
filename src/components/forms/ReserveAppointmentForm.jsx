@@ -26,13 +26,12 @@ const ReserveAppointmentForm = ({ currentUser }) => {
     } catch (error) {
       console.error('Error submitting reservation:', error);
     }
-    
+
     if (response.ok) {
       const user = await response.json();
       dispatch(loginSuccess({ user }));
       console.log('Login!');
     }
-    
 
     setAppointmentDate('');
     setSelectedCity('');
@@ -45,7 +44,7 @@ const ReserveAppointmentForm = ({ currentUser }) => {
   // }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
+    <form onSubmit={handleSubmit} className="text-black max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
       <label className="block mb-2">
         Full Name:
         <input
@@ -56,7 +55,7 @@ const ReserveAppointmentForm = ({ currentUser }) => {
         />
       </label>
 
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         Car:
         <input
           type="text"
@@ -66,7 +65,7 @@ const ReserveAppointmentForm = ({ currentUser }) => {
         />
       </label>
 
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         Location:
         <input
           type="text"
@@ -77,7 +76,7 @@ const ReserveAppointmentForm = ({ currentUser }) => {
         />
       </label>
 
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         Appointment Date:
         <input
           type="date"
