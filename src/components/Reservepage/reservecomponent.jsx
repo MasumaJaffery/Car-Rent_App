@@ -30,9 +30,14 @@ const ReserveComponent = () => (
         If you wish to find out if a test-ride is available in your area, please
         use the selector below.
       </p>
+<<<<<<< HEAD
 
       <ReserveAppointmentForm />
+=======
+>>>>>>> dev
     </div>
+
+    {/* Form for new reservation booking goes here  */}
   </div>
 );
 

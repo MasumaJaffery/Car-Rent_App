@@ -33,14 +33,14 @@ const SignUpForm = () => {
         },
       };
 
-      const response = await axios.post('http://127.0.0.1:3000/api/v1/users', dataToSend, {
+      const response = await axios.post('http://127.0.0.1:4000/api/v1/users', dataToSend, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
       console.log('Response:', response.data);
-      navigate('/');
+      navigate('/Homepage');
 
       // Reset form fields
       setName('');
