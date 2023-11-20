@@ -1,20 +1,78 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+// import { useDispatch } from 'react-redux';
+import { useAuth } from '../Shared/AuthContext';
 
 const CarSellingForm = () => {
-  const [financeFee, setFinanceFee] = useState('');
-  const [purchaseFee, setPurchaseFee] = useState('');
-  const [totalAmountPayable, setTotalAmountPayable] = useState('');
-  const [duration, setDuration] = useState('');
+  const auth = useAuth();
+  const { user } = auth;
+  // const dispatch = useDispatch(); // Commented out as it's not used
+  if (!user) {
+    // Handle the case when the user is not authenticated
+    console.log('no userrrrrrrrrrrrrr!!');
+    return null;
+  }
+  let initialName = '';
+  let initialDescription = '';
+  let initialCategory = '';
+  let initialAddedBy = '';
+
+  if (user) {
+    initialName = user.name;
+    initialDescription = user.description;
+    initialCategory = user.category;
+    initialAddedBy = user.addedBy;
+  }
+
+  const [name, setName] = useState(initialName);
+  const [description, setDescription] = useState(initialDescription);
+  const [category, setCategory] = useState(initialCategory);
+  const [addedBy, setAddedBy] = useState(initialAddedBy);
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here, including selectedFile if needed
-    // console.log('Form submitted with selected file:', selectedFile);
+
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('category', category);
+      formData.append('added_by', addedBy);
+      if (selectedFile) {
+        formData.append('picture', selectedFile, selectedFile.name);
+      }
+
+      if (!user || !user.id) {
+        // Handle the case when the user or user.id is null or undefined
+        console.error('User or user ID is missing.');
+        // You can redirect to a login page or show a message to the user
+        // For example, you might want to redirect to the login page:
+        // history.push('/login');
+        return;
+      }
+
+      const response = await axios.post(
+        `http://localhost:4000/api/v1/users/${user.id}/cars`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      if (response && response.data) {
+        console.log('Car added successfully:', response.data);
+      } else {
+        console.log('Car added successfully, but response data is undefined.');
+      }
+    } catch (error) {
+      console.error('Error adding car:', error.response?.data || error.message);
+    }
   };
 
   const handleFileChange = (e) => {
-    // Handle file selection logic here
     const file = e.target.files[0];
     setSelectedFile(file);
   };
@@ -24,48 +82,56 @@ const CarSellingForm = () => {
       onSubmit={handleSubmit}
       className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md"
     >
-      <label className="block mb-2">
-        Finance Fee:
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-600">Name:</label>
         <input
           type="text"
-          value={financeFee}
-          onChange={(e) => setFinanceFee(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
-      </label>
+      </div>
 
-      <label className="block mb-2">
-        Purchase Fee:
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-600">
+          Description:
+        </label>
         <input
           type="text"
-          value={purchaseFee}
-          onChange={(e) => setPurchaseFee(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
-      </label>
+      </div>
 
-      <label className="block mb-2">
-        Total Amount Payable:
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-600">
+          Category:
+        </label>
         <input
           type="text"
-          value={totalAmountPayable}
-          onChange={(e) => setTotalAmountPayable(e.target.value)}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
-      </label>
+      </div>
 
-      <label className="block mb-2">
-        Duration:
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-600">
+          Added by:
+        </label>
         <input
           type="text"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
+          value={addedBy}
+          onChange={(e) => setAddedBy(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
-      </label>
+      </div>
 
-      <label className="block mb-2">
-        Upload Picture:
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-600">
+          Upload Picture:
+        </label>
         <input
           type="file"
           onChange={handleFileChange}
@@ -73,15 +139,14 @@ const CarSellingForm = () => {
         />
         {selectedFile && (
           <p className="mt-2 text-sm text-gray-500">
-            Selected File:
-            {selectedFile.name}
+            Selected File: {selectedFile.name}
           </p>
         )}
-      </label>
+      </div>
 
       <button
         type="submit"
-        className="w-full bg-lime-500 text-white py-2 px-4 add_item_submit_btn rounded-md hover:bg-lime-700 focus:outline-none"
+        className="w-full bg-lime-500 text-white py-2 px-4 rounded-md hover:bg-lime-700 focus:outline-none"
       >
         Submit
       </button>
