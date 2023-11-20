@@ -49,7 +49,7 @@ const Sidebar = ({ onSidebarItemClick }) => {
         </li>
         <li className="list">
           <button type="button" onClick={handleHamburgerClick}>
-            Delete
+            Logout
           </button>
         </li>
       </ul>
