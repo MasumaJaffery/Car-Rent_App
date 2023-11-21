@@ -70,7 +70,7 @@ const CarSellingForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
-      <label className="block mb-2 text-black">
+      <label className="block mb-2">
         Name:
         <input
           type="text"
@@ -81,7 +81,7 @@ const CarSellingForm = () => {
         />
       </label>
 
-      <label className="block mb-2 text-black">
+      <label className="block mb-2">
         Description:
         <textarea
           name="description"
@@ -91,7 +91,7 @@ const CarSellingForm = () => {
         />
       </label>
 
-      <label className="block mb-2 text-black">
+      <label className="block mb-2">
         Price:
         <input
           type="text"
@@ -102,7 +102,7 @@ const CarSellingForm = () => {
         />
       </label>
 
-      <label className="block mb-2 text-black">
+      <label className="block mb-2">
         City:
         <input
           type="text"
@@ -113,7 +113,7 @@ const CarSellingForm = () => {
         />
       </label>
 
-      <label className="block mb-2 text-black">
+      <label className="block mb-2">
         Upload Picture:
         <input
           type="file"
