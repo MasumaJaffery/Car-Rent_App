@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
 import { Carousel } from 'react-responsive-carousel';
 import Heading from './mainheading';
@@ -21,16 +22,21 @@ const MyCarousel = () => (
           centerSlidePercentage={40}
         >
           <div>
-            <img
-              src={Car1}
-              alt="Car Rental 1"
-              className="w-full md:w-1/2 object-cover"
-            />
-            <div className="detials">
-              <h5 className="title">Audi</h5>
-              <p>...</p>
-              <IconsCar />
-            </div>
+            <Link to="/car/:id">
+
+              <img
+                src={Car1}
+                alt="Car Rental 1"
+                className="w-full md:w-1/2 object-cover"
+              />
+              <div className="detials">
+                <h5 className="title">Audi</h5>
+
+                <p>...</p>
+                <IconsCar />
+
+              </div>
+            </Link>
           </div>
           <div>
             <img
