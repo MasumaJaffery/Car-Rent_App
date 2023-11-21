@@ -33,8 +33,8 @@ const Sidebar = ({ onSidebarItemClick }) => {
         }`}
       >
         <li className="list">
-          <Link to="/" onClick={handleHamburgerClick}>
-            My Reservations
+          <Link to="/homepage" onClick={handleHamburgerClick}>
+            Catalog of Cars
           </Link>
         </li>
         <li className="list">
