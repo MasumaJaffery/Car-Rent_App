@@ -52,6 +52,16 @@ const Sidebar = ({ onSidebarItemClick }) => {
             Delete
           </button>
         </li>
+        <li className="list">
+          <Link to="/carlist" type="button" onClick={handleHamburgerClick}>
+            Car list
+          </Link>
+        </li>
+        <li className="list">
+          <Link to="addcar" type="button" onClick={handleHamburgerClick}>
+            Add a car
+          </Link>
+        </li>
       </ul>
       <div className="logos">
         <Icons />

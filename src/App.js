@@ -8,12 +8,13 @@ import AddItemForm from './components/forms/AddItemForm';
 import Sidebar from './components/Shared/sidebar';
 import CarDetailsPage from './components/CarDetails/cardetailspage';
 import ReserveAppointmentForm from './components/forms/ReserveAppointmentForm';
+import DisplayCars from './components/Car/DisplayCars';
+import AddCarForm from './components/Car/AddCarForm';
 
 const App = () => (
   <Router>
     <div className="App flex">
       <Routes>
-
         <Route path="/login" element={<SignInForm />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/Homepage" element={<Homepage />} />
@@ -30,6 +31,8 @@ const App = () => (
                   <Route path="/add" element={<AddItemForm />} />
                   <Route path="/reserve" element={<ReserveAppointmentForm />} />
                   <Route path="/car/:id" element={<CarDetailsPage />} />
+                  <Route path="/addcar/" element={<AddCarForm />} />
+                  <Route path="/carlist/" element={<DisplayCars />} />
                   {/* Add other routes as needed */}
                 </Routes>
               </div>

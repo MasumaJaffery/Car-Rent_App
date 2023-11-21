@@ -36,7 +36,7 @@ const SignIn = () => {
         const user = await response.json();
         dispatch(loginSuccess({ user }));
         console.log('Login!');
-        navigate('/Homepage');
+        navigate('*');
       } else {
         dispatch(loginFailure());
         setError('Login failed');
@@ -60,7 +60,10 @@ const SignIn = () => {
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full bg-opacity-90">
         <form className="space-y-4" onSubmit={handleLogin}>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-500 text-left">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-500 text-left"
+            >
               Email
               <input
                 type="email"
@@ -74,7 +77,10 @@ const SignIn = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-500 text-left">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-500 text-left"
+            >
               Password
               <input
                 type="password"
@@ -85,9 +91,7 @@ const SignIn = () => {
                 placeholder="Password"
               />
             </label>
-            {error && (
-              <div className="text-red-500">{error}</div>
-            )}
+            {error && <div className="text-red-500">{error}</div>}
           </div>
 
           <div className="mt-6">
