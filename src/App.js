@@ -14,7 +14,6 @@ const App = () => (
   <Router>
     <div className="App flex">
       <Routes>
-
         <Route path="/login" element={<SignInForm />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/" element={<Splash />} />
