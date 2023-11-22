@@ -1,8 +1,10 @@
+// Sidebar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Icons from '../Homepage/icons';
+import Logout from '../Deviseforms/logout';
 
 const Sidebar = ({ onSidebarItemClick }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -13,6 +15,11 @@ const Sidebar = ({ onSidebarItemClick }) => {
 
   const handleHamburgerClick = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleSidebarItemClick = () => {
+    onSidebarItemClick();
+    setIsSidebarOpen(false);
   };
 
   return (
@@ -33,31 +40,28 @@ const Sidebar = ({ onSidebarItemClick }) => {
         }`}
       >
         <li className="list">
-          <Link to="/homepage" onClick={handleHamburgerClick}>
+          <Link to="/homepage" onClick={handleSidebarItemClick}>
             Catalog of Cars
           </Link>
         </li>
         <li className="list">
-          <Link to="/reserve" onClick={handleHamburgerClick}>
+          <Link to="/reserve" onClick={handleSidebarItemClick}>
             Reserve
           </Link>
         </li>
         <li className="list">
-          <Link to="/add" onClick={handleHamburgerClick}>
+          <Link to="/add" onClick={handleSidebarItemClick}>
             Add
           </Link>
         </li>
         <li className="list">
-          <Link to="/reservationlist" onClick={handleHamburgerClick}>
+          <Link to="/reservationlist" onClick={handleSidebarItemClick}>
             Reserve List
           </Link>
         </li>
         <li className="list">
-          <button type="button" onClick={handleHamburgerClick}>
-            Delete
-          </button>
+          <Logout /> {/* Render the Logout component */}
         </li>
-
       </ul>
       <div className="logos">
         <Icons />
