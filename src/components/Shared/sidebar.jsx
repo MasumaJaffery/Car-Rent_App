@@ -59,6 +59,11 @@ const Sidebar = ({ onSidebarItemClick }) => {
             Reserve List
           </Link>
         </li>
+        <li className="list">
+          <button type="button" onClick={handleHamburgerClick}>
+            Logout
+          </button>
+        </li>
       </ul>
       <div className="logos">
         <Icons />
