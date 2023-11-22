@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { loginSuccess } from '../../redux/slices/authSlice';
 
-const ReserveAppointmentForm = ({ currentUser }) => {
-  console.log('currentUser:', currentUser);
-  const [selectedCar, setSelectedCar] = useState('');
+const ReserveAppointmentForm = ({ currentUser, selectedCar }) => {
   const [appointmentDate, setAppointmentDate] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!currentUser || !selectedCar) {
+      console.error('Missing user or car data');
+      return; // Optionally, display an error message to the user
+    }
 
     const formData = {
       user_id: currentUser.id,
@@ -22,27 +24,12 @@ const ReserveAppointmentForm = ({ currentUser }) => {
     try {
       const response = await axios.post('http://localhost:4000/api/v1/reservations', formData);
       console.log('Reservation submitted:', response.data);
-      // Perform additional actions here
+      // Handle reservation success (e.g., show confirmation message)
     } catch (error) {
       console.error('Error submitting reservation:', error);
+      // Handle reservation failure (e.g., show error message)
     }
-
-    if (response.ok) {
-      const user = await response.json();
-      dispatch(loginSuccess({ user }));
-      console.log('Login!');
-    }
-
-    setAppointmentDate('');
-    setSelectedCity('');
   };
-
-  // if (!currentUser) {
-  //   console.error('Missing user or car data');
-  //   // Optionally, display an error message to the user
-  //   return ('not ready yet');
-  // }
-
   return (
     <form onSubmit={handleSubmit} className="text-black max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
       <label className="block mb-2">
@@ -59,7 +46,7 @@ const ReserveAppointmentForm = ({ currentUser }) => {
         Car:
         <input
           type="text"
-          value={(e) => setSelectedCar(e.target.value)}
+          value={selectedCar?.name || ''} // Assuming 'name' is a property of selectedCar
           readOnly
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
         />
@@ -99,13 +86,13 @@ const ReserveAppointmentForm = ({ currentUser }) => {
 
 ReserveAppointmentForm.propTypes = {
   currentUser: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired, // Add name to the propTypes
-  }).isRequired,
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }),
   selectedCar: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired, // Add name to the propTypes
-  }).isRequired,
+    name: PropTypes.string.isRequired,
+  }), // Making selectedCar optional for now
 };
 
 export default ReserveAppointmentForm;
