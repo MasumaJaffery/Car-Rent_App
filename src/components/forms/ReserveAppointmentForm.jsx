@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { loginSuccess } from '../../redux/slices/authSlice';
@@ -8,6 +9,7 @@ const ReserveAppointmentForm = ({ currentUser }) => {
   const [selectedCar, setSelectedCar] = useState('');
   const [appointmentDate, setAppointmentDate] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,21 +22,23 @@ const ReserveAppointmentForm = ({ currentUser }) => {
     };
 
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/reservations', formData);
+      const response = await axios.post(
+        'http://localhost:4000/api/v1/reservations',
+        formData,
+      );
       console.log('Reservation submitted:', response.data);
-      // Perform additional actions here
+
+      if (response.ok) {
+        const user = await response.json();
+        dispatch(loginSuccess({ user }));
+        console.log('Login!');
+      }
+
+      setAppointmentDate('');
+      setSelectedCity('');
     } catch (error) {
       console.error('Error submitting reservation:', error);
     }
-
-    if (response.ok) {
-      const user = await response.json();
-      dispatch(loginSuccess({ user }));
-      console.log('Login!');
-    }
-
-    setAppointmentDate('');
-    setSelectedCity('');
   };
 
   // if (!currentUser) {
@@ -44,7 +48,10 @@ const ReserveAppointmentForm = ({ currentUser }) => {
   // }
 
   return (
-    <form onSubmit={handleSubmit} className="text-black max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
+    <form
+      onSubmit={handleSubmit}
+      className="text-black max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md"
+    >
       <label className="block mb-2">
         Full Name:
         <input

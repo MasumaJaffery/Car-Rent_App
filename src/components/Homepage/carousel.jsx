@@ -1,96 +1,78 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
 import { Carousel } from 'react-responsive-carousel';
-import Heading from './mainheading';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import axios from 'axios';
 import Car1 from '../../images/audi-png-45298.png';
 import Car2 from '../../images/audi-png-45306.png';
 import Car3 from '../../images/audi-png-45324.png';
+// import Icons from './icons';
+import Heading from './mainheading';
 import IconsCar from './icons_car';
 
-const MyCarousel = () => (
-  <div>
-    <Heading />
-    <div className="w-[85vw] mx-auto">
-      <div>
-        <Carousel
-          showArrows
-          showThumbs={false}
-          showStatus={false}
-          dynamicHeight={false}
-          centerMode
-          centerSlidePercentage={40}
-        >
-          <div>
-            <Link to="/car/:id">
+const MyCarousel = () => {
+  const [carData, setCarData] = useState([]);
+  const [randomCars, setRandomCars] = useState([]);
 
-              <img
-                src={Car1}
-                alt="Car Rental 1"
-                className="w-full md:w-1/2 object-cover"
-              />
-              <div className="detials">
-                <h5 className="title">Audi</h5>
+  useEffect(() => {
+    const fetchCarData = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/api/v1/items');
+        setCarData(response.data);
+        setRandomCars(generateRandomCars(response.data.length));
+      } catch (error) {
+        console.error('Error fetching car data:', error);
+      }
+    };
 
-                <p>...</p>
-                <IconsCar />
+    fetchCarData();
+  }, []);
 
+  const generateRandomCars = (count) => {
+    const carImages = [Car1, Car2, Car3];
+
+    return Array.from({ length: count }, () => {
+      const randomIndex = Math.floor(Math.random() * carImages.length);
+      return carImages[randomIndex];
+    });
+  };
+
+  return (
+    <div>
+      <Heading />
+      <div className="w-[85vw] mx-auto">
+        <div>
+          <Carousel
+            showArrows
+            showThumbs={false}
+            showStatus={false}
+            dynamicHeight={false}
+            centerMode
+            centerSlidePercentage={40}
+          >
+            {carData.map((car, index) => (
+              <div key={car.id}>
+                <Link to={`/car/${car.id}`}>
+                  {randomCars[index] && (
+                    <img
+                      src={randomCars[index]}
+                      alt={`Random Car Rental ${index + 1}`}
+                      className="w-full md:w-1/2 object-cover"
+                    />
+                  )}
+                  <div className="detials">
+                    <IconsCar />
+                    <h5 className="title">{car.name}</h5>
+                    <p>{car.description}</p>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </div>
-          <div>
-            <img
-              src={Car2}
-              alt="Car Rental 2"
-              className="w-full md:w-50 object-cover"
-            />
-            <div className="detials">
-              <h5 className="title">Audi</h5>
-              <p>...</p>
-              <IconsCar />
-            </div>
-          </div>
-          <div>
-            <img
-              src={Car3}
-              alt="Car Rental 3"
-              className="w-full md:w-50 object-cover"
-            />
-            <div className="detials">
-              <h5 className="title">Audi</h5>
-              <p>...</p>
-              <IconsCar />
-            </div>
-          </div>
-          <div>
-            <img
-              src={Car1}
-              alt="Car Rental 4"
-              className="w-full md:w-50 object-cover"
-            />
-            <div className="detials">
-              <h5 className="title">Audi</h5>
-              <p>...</p>
-              <IconsCar />
-            </div>
-          </div>
-          <div>
-            <img
-              src={Car2}
-              alt="Car Rental5"
-              className="w-full md:w-50 object-cover"
-            />
-            <div className="detials">
-              <h5 className="title">Audi</h5>
-              <p>...</p>
-              <IconsCar />
-            </div>
-            <div />
-          </div>
-        </Carousel>
+            ))}
+          </Carousel>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default MyCarousel;

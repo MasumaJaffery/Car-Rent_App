@@ -43,11 +43,7 @@ const CarDetailsComponent = ({
             </tr>
             <tr className="border-b">
               <td className="py-2">Duration</td>
-              <td className="py-2">
-                {duration}
-                {' '}
-                Months
-              </td>
+              <td className="py-2">{duration} Months</td>
             </tr>
           </tbody>
         </table>
