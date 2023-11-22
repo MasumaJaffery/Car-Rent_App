@@ -19,23 +19,19 @@ const AdditemComponent = () => (
 
     {/* Content container */}
     <div className="relative z-10">
-      <h1 className="text-4xl font-bold mb-4 mt-3">BOOK A CAR TEST-RIDE</h1>
+      <h1 className="text-4xl font-bold mt-10 mb-4 mt-3">
+        Add your car with properties!
+      </h1>
       <p className="mb-3 mt-10">
         There are 34 different cars in Super Cars of the Vespa. Today five
         categories are in display: the classic manual transmission and the
-        modern CVT transmission S, LX, GT, and GTS. We have showrooms all over
-        the globe which some include test-riding facilities.
-      </p>
-      <p className="mb-6">
-        If you wish to find out if a test-ride is available in your area, please
-        use the selector below.
+        modern CVT transmission S, LX, GT, and GTS.
       </p>
 
       <CarSellingForm />
     </div>
 
     {/* Form for new reservation booking goes here  */}
-
   </div>
 );
 
