@@ -1,5 +1,3 @@
-// CarSellingForm.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -48,11 +46,15 @@ const CarSellingForm = () => {
     formDataToSend.append('image', formData.image);
 
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/items', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
+      const response = await axios.post(
+        'http://localhost:4000/api/v1/items',
+        formDataToSend,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         },
-      });
+      );
 
       console.log('Item created:', response.data);
       setFormData({
@@ -69,57 +71,60 @@ const CarSellingForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
-      <label className="block mb-2">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md"
+    >
+      <label className="block mb-2 text-black">
         Name:
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500 text-black"
         />
       </label>
 
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         Description:
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500 text-black"
         />
       </label>
 
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         Price:
         <input
           type="text"
           name="price"
           value={formData.price}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500 text-black"
         />
       </label>
 
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         City:
         <input
           type="text"
           name="city"
           value={formData.city}
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500 text-black"
         />
       </label>
 
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         Upload Picture:
         <input
           type="file"
           name="image"
           onChange={handleFileChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500 text-black"
         />
       </label>
 
