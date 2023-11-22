@@ -165,3 +165,7 @@ li {
 .reserve_appointment_submit_btn {
   background-color: #98be11 !important;
 }
+
+.visually-hidden {
+  display: none;
+}
