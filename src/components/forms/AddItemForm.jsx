@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const CarSellingForm = () => {
+  const [successMessage, setSuccessMessage] = useState(null);
   const [formData, setFormData] = useState(() => {
     const savedFormData = localStorage.getItem('carFormData');
     return savedFormData
@@ -29,13 +30,13 @@ const CarSellingForm = () => {
     });
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({
-      ...formData,
-      image: file,
-    });
-  };
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setFormData({
+  //     ...formData,
+  //     image: file,
+  //   });
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,13 +49,18 @@ const CarSellingForm = () => {
     formDataToSend.append('image', formData.image);
 
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/items', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
+      const response = await axios.post(
+        'http://localhost:4000/api/v1/items',
+        formDataToSend,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         },
-      });
+      );
 
       console.log('Item created:', response.data);
+      setSuccessMessage('Item added successfully'); // Set success message
       setFormData({
         name: '',
         description: '',
@@ -65,12 +71,16 @@ const CarSellingForm = () => {
       localStorage.removeItem('carFormData');
     } catch (error) {
       console.error('Error creating item:', error);
+      setSuccessMessage('All fields required');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
-      <label className="block mb-2">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md"
+    >
+      <label className="block mb-2 text-black">
         Name:
         <input
           type="text"
@@ -80,8 +90,7 @@ const CarSellingForm = () => {
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
-
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         Description:
         <textarea
           name="description"
@@ -90,8 +99,7 @@ const CarSellingForm = () => {
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
-
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         Price:
         <input
           type="text"
@@ -101,8 +109,7 @@ const CarSellingForm = () => {
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
-
-      <label className="block mb-2">
+      <label className="block mb-2 text-black">
         City:
         <input
           type="text"
@@ -112,16 +119,26 @@ const CarSellingForm = () => {
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
         />
       </label>
-
-      <label className="block mb-2">
+      {/* <label className="block mb-2">
         Upload Picture:
         <input
           type="file"
           name="image"
           onChange={handleFileChange}
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-lime-500"
+          className="w-full p-2 border border-gray-300
+rounded-md focus:outline-none focus:border-lime-500"
         />
-      </label>
+      </label>{' '} */}
+      {successMessage && (
+        <div
+          className="mb-4"
+          style={{
+            color: 'black',
+          }}
+        >
+          {successMessage}
+        </div>
+      )}
 
       <button
         type="submit"

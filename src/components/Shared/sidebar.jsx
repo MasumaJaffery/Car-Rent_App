@@ -33,8 +33,8 @@ const Sidebar = ({ onSidebarItemClick }) => {
         }`}
       >
         <li className="list">
-          <Link to="/" onClick={handleHamburgerClick}>
-            My Reservations
+          <Link to="/homepage" onClick={handleHamburgerClick}>
+            Catalog of Cars
           </Link>
         </li>
         <li className="list">
@@ -48,10 +48,16 @@ const Sidebar = ({ onSidebarItemClick }) => {
           </Link>
         </li>
         <li className="list">
+          <Link to="/reservationlist" onClick={handleHamburgerClick}>
+            Reserve List
+          </Link>
+        </li>
+        <li className="list">
           <button type="button" onClick={handleHamburgerClick}>
             Logout
           </button>
         </li>
+
       </ul>
       <div className="logos">
         <Icons />
