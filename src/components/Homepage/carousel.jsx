@@ -40,7 +40,7 @@ const MyCarousel = () => {
   return (
     <div>
       <Heading />
-      <div className="w-[85vw] mx-auto">
+      <div className="w-[80vw] mx-auto">
         <div>
           <Carousel
             showArrows
@@ -64,6 +64,12 @@ const MyCarousel = () => {
                     <IconsCar />
                     <h5 className="title">{car.name}</h5>
                     <p>{car.description}</p>
+                    <button
+                      type="button"
+                      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                    >
+                      Reserve
+                    </button>
                   </div>
                 </Link>
               </div>

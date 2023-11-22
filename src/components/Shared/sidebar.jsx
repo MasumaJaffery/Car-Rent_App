@@ -1,3 +1,4 @@
+// Sidebar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -25,7 +26,7 @@ const Sidebar = ({ onSidebarItemClick }) => {
         className="hamburger-menu"
         onClick={handleHamburgerClick}
       >
-        ☰
+        <span className="visually-hidden">fd</span>
       </button>
       <ul
         className={`sidebar-menu flex flex-col items-start ${
@@ -35,6 +36,12 @@ const Sidebar = ({ onSidebarItemClick }) => {
         <li className="list">
           <Link to="/homepage" onClick={handleHamburgerClick}>
             Catalog of Cars
+          </Link>
+        </li>
+        {/* Update the link to navigate to "/delete" */}
+        <li className="list">
+          <Link to="/delete" onClick={handleHamburgerClick}>
+            Delete
           </Link>
         </li>
         <li className="list">
@@ -52,12 +59,6 @@ const Sidebar = ({ onSidebarItemClick }) => {
             Reserve List
           </Link>
         </li>
-        <li className="list">
-          <button type="button" onClick={handleHamburgerClick}>
-            Delete
-          </button>
-        </li>
-
       </ul>
       <div className="logos">
         <Icons />
