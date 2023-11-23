@@ -26,9 +26,8 @@ const SignIn = () => {
     try {
       const response = await axios.post('http://localhost:4000/login', { user: { email, password } });
       const user = response.data;
+      sessionStorage.setItem('user', JSON.stringify(user)); // Store the entire user object
       dispatch(loginSuccess(user));
-      sessionStorage.setItem('authToken', user.jwt_token);
-      setErrorMessage('');
       navigate('/Homepage');
     } catch (error) {
       if (error.response) {
