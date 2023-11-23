@@ -1,12 +1,14 @@
 import React from 'react';
-import MyReserveComponent from './myreservecomponent';
+import ReserveAppointmentForm from '../forms/ReserveAppointmentForm'; 
+const ReservationPage = () => {
+  const currentUser = { id: 1, name: 'John Doe' }; 
 
-function MyReservepage() {
   return (
-    <div className="App flex">
-      <MyReserveComponent />
+    <div>
+      <h1>Reserve Appointment</h1>
+      <ReserveAppointmentForm currentUser={currentUser} />
     </div>
   );
-}
+};
 
-export default MyReservepage;
+export default ReservationPage;

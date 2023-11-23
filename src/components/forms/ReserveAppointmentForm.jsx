@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { loginSuccess } from '../../redux/slices/authSlice';
 
 const ReserveAppointmentForm = ({ currentUser }) => {
-  console.log('currentUser:', currentUser);
   const [selectedCar, setSelectedCar] = useState('');
   const [appointmentDate, setAppointmentDate] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
@@ -13,8 +12,8 @@ const ReserveAppointmentForm = ({ currentUser }) => {
     e.preventDefault();
 
     const formData = {
-      user_id: currentUser.id,
-      car_id: selectedCar.id,
+      user_id: currentUser?.id || '', // Default to empty string if currentUser is undefined
+      car_id: selectedCar.id || '', // You might want to add a similar default behavior here
       date: appointmentDate,
       city: selectedCity,
     };
@@ -23,25 +22,19 @@ const ReserveAppointmentForm = ({ currentUser }) => {
       const response = await axios.post('http://localhost:4000/api/v1/reservations', formData);
       console.log('Reservation submitted:', response.data);
       // Perform additional actions here
+      if (response.ok) {
+        const user = await response.json();
+        // Assuming you have a 'dispatch' function available from Redux
+        dispatch(loginSuccess({ user }));
+        console.log('Login!');
+      }
     } catch (error) {
       console.error('Error submitting reservation:', error);
-    }
-
-    if (response.ok) {
-      const user = await response.json();
-      dispatch(loginSuccess({ user }));
-      console.log('Login!');
     }
 
     setAppointmentDate('');
     setSelectedCity('');
   };
-
-  // if (!currentUser) {
-  //   console.error('Missing user or car data');
-  //   // Optionally, display an error message to the user
-  //   return ('not ready yet');
-  // }
 
   return (
     <form onSubmit={handleSubmit} className="text-black max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
@@ -49,7 +42,7 @@ const ReserveAppointmentForm = ({ currentUser }) => {
         Full Name:
         <input
           type="text"
-          value={currentUser?.name || ''} // Assuming 'name' is a property of currentUser
+          value={currentUser?.name || ''}
           readOnly
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
         />
@@ -59,7 +52,7 @@ const ReserveAppointmentForm = ({ currentUser }) => {
         Car:
         <input
           type="text"
-          value={(e) => setSelectedCar(e.target.value)}
+          value={selectedCar.name || ''}
           readOnly
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
         />
@@ -100,12 +93,9 @@ const ReserveAppointmentForm = ({ currentUser }) => {
 ReserveAppointmentForm.propTypes = {
   currentUser: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired, // Add name to the propTypes
-  }).isRequired,
-  selectedCar: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired, // Add name to the propTypes
-  }).isRequired,
+    name: PropTypes.string.isRequired,
+    // Add other necessary properties and their PropTypes
+  }),
 };
 
 export default ReserveAppointmentForm;
