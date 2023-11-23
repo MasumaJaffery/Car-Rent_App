@@ -6,9 +6,9 @@ import tokenReducer from './slices/tokenSlice';
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    token: tokenReducer
+    token: tokenReducer,
     // other reducers if present
-  }
+  },
   // other store configurations
 });
 

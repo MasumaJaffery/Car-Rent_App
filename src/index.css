@@ -52,7 +52,7 @@ li {
 }
 
 .Heading {
-  padding: 8%;
+  padding: 50px;
 }
 
 .mainh {
@@ -104,11 +104,9 @@ li {
   border-radius: 0 50% 50% 0;
 }
 
-/* //////////=================/////////// */
-
 /* ///////// Sidebar style   /////////// */
 
-/* ////////================/////////// */
+/*
 
 .sidebar {
   height: 100vh;
@@ -166,4 +164,13 @@ li {
 .add_item_submit_btn,
 .reserve_appointment_submit_btn {
   background-color: #98be11 !important;
+}
+
+.visually-hidden {
+  display: none;
+}
+
+.flexx {
+  display: flex;
+  flex-direction: column;
 }

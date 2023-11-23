@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import axios from 'axios';
 import Car1 from '../../images/audi-png-45298.png';
 import Car2 from '../../images/audi-png-45306.png';
 import Car3 from '../../images/audi-png-45324.png';
-import Heading from './mainheading';
-import IconsCar from './icons_car';
+import IconsCar from '../Homepage/icons_car';
 
-const MyCarousel = () => {
+const DeletePage = () => {
   const [carData, setCarData] = useState([]);
   const [randomCars, setRandomCars] = useState([]);
 
@@ -36,15 +34,22 @@ const MyCarousel = () => {
     });
   };
 
-  const handleReservation = (carId) => {
-    localStorage.setItem('selectedCarId', carId);
-    // window.location.href = `/items/${carId}`;
+  const handleDeleteClick = async (carId) => {
+    try {
+      // Make an API call to delete the car with the given ID
+      await axios.delete(`http://localhost:4000/api/v1/items/${carId}`);
+
+      // Update the carData state to reflect the deletion
+      setCarData((prevData) => prevData.filter((car) => car.id !== carId));
+    } catch (error) {
+      console.error('Error deleting car:', error);
+    }
   };
 
   return (
-    <div>
-      <Heading />
-      <div className="w-[80vw] mx-auto">
+    <div className="Heading">
+      <h1 className="mainh">Delete a car</h1>
+      <div className="w-[85vw] mx-auto">
         <div>
           <Carousel
             showArrows
@@ -56,27 +61,25 @@ const MyCarousel = () => {
           >
             {carData.map((car, index) => (
               <div key={car.id}>
-                <Link to={`/car/${car.id}`}>
-                  {randomCars[index] && (
-                    <img
-                      src={randomCars[index]}
-                      alt={`Random Car Rental ${index + 1}`}
-                      className="w-full md:w-1/3 object-cover"
-                    />
-                  )}
-                  <div className="detials">
-                    <IconsCar />
-                    <h5 className="title">{car.name}</h5>
-                    <p>{car.description}</p>
-                    <button
-                      type="button"
-                      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-                      onClick={() => handleReservation(car.id)}
-                    >
-                      Reserve
-                    </button>
-                  </div>
-                </Link>
+                {randomCars[index] && (
+                  <img
+                    src={randomCars[index]}
+                    alt={`Random Car Rental ${index + 1}`}
+                    className="w-full md:w-1/2 object-cover"
+                  />
+                )}
+                <div className="detials">
+                  <IconsCar />
+                  <h5 className="title">{car.name}</h5>
+                  <p>{car.description}</p>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteClick(car.id)}
+                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             ))}
           </Carousel>
@@ -86,4 +89,4 @@ const MyCarousel = () => {
   );
 };
 
-export default MyCarousel;
+export default DeletePage;

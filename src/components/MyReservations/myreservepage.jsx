@@ -1,7 +1,7 @@
 import React from 'react';
 import MyReserveComponent from './myreservecomponent';
 
-function Reservepage() {
+function MyReservepage() {
   return (
     <div className="App flex">
       <MyReserveComponent />
@@ -9,4 +9,4 @@ function Reservepage() {
   );
 }
 
-export default Reservepage;
+export default MyReservepage;

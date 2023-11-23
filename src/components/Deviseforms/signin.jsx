@@ -1,38 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import UI from '../../images/UI-Masuma.png';
-import { loginSuccess, loginFailure } from '../../redux/slices/authSlice';
-import { setToken } from '../../redux/slices/tokenSlice';
-
+import { loginSuccess } from '../../redux/slices/authSlice';
 
 const SignIn = () => {
-  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const token = useSelector(state => state.token.token);
+  const [errorMessage, setErrorMessage] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('authToken');
+    console.log(token);
+    if (token) {
+      navigate('/Homepage');
+    }
+  }, [navigate]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:4000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-       
 
-      if (response.ok) {
-  const { token } = await response.json();
-  dispatch(setToken(token)); // Dispatch the setToken action with the obtained token
-  dispatch(loginSuccess({ user }));
-  console.log('Login!');
-} else {
-  dispatch(loginFailure());
-}
+    try {
+      const response = await axios.post('http://localhost:4000/login', { user: { email, password } });
+      const user = response.data;
+      dispatch(loginSuccess(user));
+      sessionStorage.setItem('authToken', user.jwt_token);
+      setErrorMessage('');
+      navigate('/Homepage');
     } catch (error) {
-      dispatch(loginFailure());
+      if (error.response) {
+        const errorData = error.response.data;
+        const errorMessage = errorData.message || 'An error occurred during login.';
+        setErrorMessage(errorMessage);
+      } else if (error.request) {
+        setErrorMessage('No response from the server. Please try again later.');
+      } else {
+        setErrorMessage('An error occurred. Please try again later.');
+      }
     }
   };
 
@@ -74,6 +81,9 @@ const SignIn = () => {
                 placeholder="Password"
               />
             </label>
+            {errorMessage && (
+              <div className="text-red-500">{errorMessage}</div>
+            )}
           </div>
 
           <div className="mt-6">
