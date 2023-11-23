@@ -1,118 +1,83 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
-import { loginSuccess } from '../../redux/slices/authSlice';
 
-const ReserveAppointmentForm = ({ currentUser }) => {
-  console.log('currentUser:', currentUser);
-  const [selectedCar, setSelectedCar] = useState('');
-  const [appointmentDate, setAppointmentDate] = useState('');
-  const [selectedCity, setSelectedCity] = useState('');
-  const dispatch = useDispatch();
-
+const ReservationForm = () => {
+  const [date, setDate] = useState('');
+  const [city, setCity] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = {
-      user_id: currentUser.id,
-      car_id: selectedCar.id,
-      date: appointmentDate,
-      city: selectedCity,
-    };
-
     try {
       const response = await axios.post(
         'http://localhost:4000/api/v1/reservations',
-        formData,
+        {
+          user_id: getUserId(),
+          car_id: null,
+          date,
+          city,
+        },
       );
-      console.log('Reservation submitted:', response.data);
-
-      if (response.ok) {
-        const user = await response.json();
-        dispatch(loginSuccess({ user }));
-        console.log('Login!');
-      }
-
-      setAppointmentDate('');
-      setSelectedCity('');
+      console.log(response.data); // Display the response from the backend
+      // Reset the form
+      setDate('');
+      setCity('');
     } catch (error) {
-      console.error('Error submitting reservation:', error);
+      console.error(error);
     }
   };
-
-  // if (!currentUser) {
-  //   console.error('Missing user or car data');
-  //   // Optionally, display an error message to the user
-  //   return ('not ready yet');
-  // }
-
+  const getUserId = () => {
+    // Implement logic to get the user ID, e.g., from cookies or other state
+    // For example, if you have a cookie with the user ID:
+    const userIdCookie = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('user_id='));
+    return userIdCookie ? userIdCookie.split('=')[1] : null;
+  };
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="text-black max-w-md mx-auto mt-10 p-4 bg-white shadow-md rounded-md"
-    >
-      <label className="block mb-2">
-        Full Name:
-        <input
-          type="text"
-          value={currentUser?.name || ''} // Assuming 'name' is a property of currentUser
-          readOnly
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-        />
-      </label>
-
-      <label className="block mb-2 text-black">
-        Car:
-        <input
-          type="text"
-          value={(e) => setSelectedCar(e.target.value)}
-          readOnly
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-        />
-      </label>
-
-      <label className="block mb-2 text-black">
-        Location:
-        <input
-          type="text"
-          value={selectedCity}
-          onChange={(e) => setSelectedCity(e.target.value)}
-          required
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-        />
-      </label>
-
-      <label className="block mb-2 text-black">
-        Appointment Date:
-        <input
-          type="date"
-          value={appointmentDate}
-          onChange={(e) => setAppointmentDate(e.target.value)}
-          required
-          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-        />
-      </label>
-
-      <button
-        type="submit"
-        className="w-full reserve_appointment_submit_btn text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none"
-      >
-        Reserve Appointment
-      </button>
-    </form>
+    <div className="form-container">
+      <h2 className="text-2xl font-bold mb-4">Create Reservation</h2>
+      <form className="space-y-4 text-black" onSubmit={handleSubmit}>
+        <div className="flex flex-col items-center justify-center sm:flex-row">
+          <label
+            htmlFor="date"
+            className="block text-gray-800 font-medium mr-4"
+          >
+            Date
+          </label>
+          <input
+            type="date"
+            id="date"
+            className="form-input sm:w-30vw md:w-30vh mt-1 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </div>
+        <div className="flex flex-col items-center text-black justify-center sm:flex-row">
+          <label
+            htmlFor="city"
+            className="block text-gray-800 font-medium mr-4"
+          >
+            City
+          </label>
+          <input
+            type="text"
+            id="city"
+            className="form-input sm:w-30vw md:w-30vh text-black mt-1 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="Was not project requirments"
+            required
+          />
+        </div>
+        <button
+          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 
-ReserveAppointmentForm.propTypes = {
-  currentUser: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired, // Add name to the propTypes
-  }).isRequired,
-  selectedCar: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired, // Add name to the propTypes
-  }).isRequired,
-};
-
-export default ReserveAppointmentForm;
+export default ReservationForm;

@@ -52,7 +52,7 @@ li {
 }
 
 .Heading {
-  padding: 8%;
+  padding: 50px;
 }
 
 .mainh {
@@ -168,4 +168,9 @@ li {
 
 .visually-hidden {
   display: none;
+}
+
+.flexx {
+  display: flex;
+  flex-direction: column;
 }
