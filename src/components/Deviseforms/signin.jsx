@@ -1,48 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import UI from '../../images/UI-Masuma.png';
-import { loginSuccess, loginFailure } from '../../redux/slices/authSlice';
+import { loginSuccess } from '../../redux/slices/authSlice';
 
 const SignIn = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('authToken');
+    console.log(token);
+    if (token) {
+      navigate('/Homepage');
+    }
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
-      if (!email || !password) {
-        setError('Email and password are required');
-        return;
-      }
-
-      const response = await fetch('http://localhost:4000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          user: {
-            email,
-            password,
-          },
-        }),
-      });
-
-      if (response.ok) {
-        const user = await response.json();
-        dispatch(loginSuccess({ user }));
-        navigate('/Homepage');
-      } else {
-        dispatch(loginFailure());
-        setError('Login failed');
-      }
+      const response = await axios.post('http://localhost:4000/login', { user: { email, password } });
+      const user = response.data;
+      dispatch(loginSuccess(user));
+      sessionStorage.setItem('authToken', user.jwt_token);
+      setErrorMessage('');
+      navigate('/Homepage');
     } catch (error) {
-      dispatch(loginFailure());
-      setError('An error occurred');
+      if (error.response) {
+        const errorData = error.response.data;
+        const errorMessage = errorData.message || 'An error occurred during login.';
+        setErrorMessage(errorMessage);
+      } else if (error.request) {
+        setErrorMessage('No response from the server. Please try again later.');
+      } else {
+        setErrorMessage('An error occurred. Please try again later.');
+      }
     }
   };
 
@@ -59,10 +56,7 @@ const SignIn = () => {
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full bg-opacity-90">
         <form className="space-y-4" onSubmit={handleLogin}>
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-500 text-left"
-            >
+            <label htmlFor="email" className="block text-sm font-medium text-gray-500 text-left">
               Email
               <input
                 type="email"
@@ -76,10 +70,7 @@ const SignIn = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-500 text-left"
-            >
+            <label htmlFor="password" className="block text-sm font-medium text-gray-500 text-left">
               Password
               <input
                 type="password"
@@ -90,7 +81,9 @@ const SignIn = () => {
                 placeholder="Password"
               />
             </label>
-            {error && <div className="text-red-500">{error}</div>}
+            {errorMessage && (
+              <div className="text-red-500">{errorMessage}</div>
+            )}
           </div>
 
           <div className="mt-6">

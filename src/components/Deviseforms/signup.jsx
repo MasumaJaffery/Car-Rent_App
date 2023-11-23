@@ -33,15 +33,11 @@ const SignUpForm = () => {
         },
       };
 
-      const response = await axios.post(
-        'http://127.0.0.1:4000/api/v1/users',
-        dataToSend,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      const response = await axios.post('http://127.0.0.1:4000/api/v1/users', dataToSend, {
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+      });
 
       console.log('Response:', response.data);
       navigate('/Homepage');
@@ -53,11 +49,7 @@ const SignUpForm = () => {
       setConfirmPassword('');
       setError('');
     } catch (error) {
-      if (
-        error.response
-        && error.response.data
-        && error.response.data.message[0]
-      ) {
+      if (error.response && error.response.data && error.response.data.message[0]) {
         setError(error.response.data.message[0]);
       } else {
         setError('An error occurred');
@@ -77,10 +69,7 @@ const SignUpForm = () => {
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full bg-opacity-90">
         <form className="space-y-3" onSubmit={handleSubmit}>
           <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-500 text-left"
-            >
+            <label htmlFor="name" className="block text-sm font-medium text-gray-500 text-left">
               Name
               <input
                 type="text"
@@ -94,10 +83,7 @@ const SignUpForm = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-500 text-left"
-            >
+            <label htmlFor="email" className="block text-sm font-medium text-gray-500 text-left">
               Email
               <input
                 type="email"
@@ -111,10 +97,7 @@ const SignUpForm = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-500 text-left"
-            >
+            <label htmlFor="password" className="block text-sm font-medium text-gray-500 text-left">
               Password
               <input
                 type="password"
@@ -126,14 +109,13 @@ const SignUpForm = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
-            {error && <div className="text-red-500">{error}</div>}
+            {error && (
+              <div className="text-red-500">{error}</div>
+            )}
           </div>
 
           <div>
-            <label
-              htmlFor="confirmPassword"
-              className="block text-sm font-medium text-gray-500 text-left"
-            >
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-500 text-left">
               Confirm Password
               <input
                 type="password"
@@ -144,7 +126,9 @@ const SignUpForm = () => {
                 placeholder="Confirm Password"
               />
             </label>
-            {error && <div className="text-red-500">{error}</div>}
+            {error && (
+              <div className="text-red-500">{error}</div>
+            )}
           </div>
 
           <div className="mt-6">
