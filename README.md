@@ -196,7 +196,7 @@ If you like this project feel free to leave an star, as well if you have a sugge
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse.
+I would like to thank Microverse and Murat Korkmaz.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
