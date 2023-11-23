@@ -5,14 +5,13 @@ import SignUpForm from './components/Deviseforms/signup';
 import Homepage from './components/Homepage/homepage';
 import Splash from './components/Shared/splash';
 import Additempage from './components/Additempage/Additemcomponent';
-import Sidebar from './components/Shared/sidebar';
 import CarDetailsPage from './components/CarDetails/cardetailspage';
 import Reservepage from './components/Reservepage/reservecomponent';
 import MyReservepage from './components/MyReservations/myreservepage';
 
 const App = () => (
   <Router>
-    <div className="App flex">
+    <div className="App">
       <Routes>
 
         <Route path="/login" element={<SignInForm />} />
@@ -23,7 +22,6 @@ const App = () => (
           path="/*"
           element={
             <>
-              <Sidebar />
               <div className="content">
                 <Routes>
                   <Route index element={<Homepage />} />

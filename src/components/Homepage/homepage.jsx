@@ -4,7 +4,7 @@ import Sidebar from '../Shared/sidebar';
 
 function Home() {
   return (
-    <div className="App flex">
+    <div className="flex">
       <Sidebar />
       <Carousel />
     </div>

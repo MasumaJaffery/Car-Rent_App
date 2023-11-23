@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Icons from '../Homepage/icons';
+import Logout from '../Deviseforms/logout';
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -13,17 +14,11 @@ const Sidebar = () => {
   };
 
   return (
-    <div
-      className={`sidebar h-[90vh] bg-gray-100 text-black ${
-        isSidebarOpen ? 'open' : ''
-      }`}
-    >
-      <button type="button" className="logo" onClick={handleLogoClick}>
-        <h2 className="logo1">Super Cars</h2>
-      </button>
+    <div className="flex flex-col h-screen w-64 bg-gray-200">
+        <h2 className="logo1 text-lg font-bold">Super Cars</h2>
       <button
         type="button"
-        className="hamburger-menu"
+        className="hamburger-menu p-4"
         onClick={handleHamburgerClick}
       >
         <span className="visually-hidden">Toggle Menu</span>
@@ -80,20 +75,16 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className="list">
-          <button type="button" onClick={handleHamburgerClick}>
-            Logout
+          <button type="button" onClick={handleHamburgerClick} className="block text-black py-2 px-4">
+          <Logout /> 
           </button>
         </li>
-      </ul>
-      <div className=" bottom-0 left-0 right-0 flex justify-end items-center p-4">
+        <li className="flex justify-end items-center p-2">
         <Icons />
-      </div>
+        </li>
+      </ul>
     </div>
   );
 };
-
-// Sidebar.propTypes = {
-//   onSidebarItemClick: PropTypes.func.isRequired,
-// };
 
 export default Sidebar;
