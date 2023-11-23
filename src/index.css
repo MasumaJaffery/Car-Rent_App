@@ -169,3 +169,8 @@ li {
 .visually-hidden {
   display: none;
 }
+
+.flexx {
+  display: flex;
+  flex-direction: column;
+}
