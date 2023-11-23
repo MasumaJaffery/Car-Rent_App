@@ -34,7 +34,6 @@ const CarDetailsComponent = ({
         setPrice(data.price);
         setAddedBy(data.addedby);
       } catch (error) {
-        console.error('Error fetching car data:', error);
         setError('Error fetching car data');
       }
     };

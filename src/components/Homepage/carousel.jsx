@@ -61,7 +61,7 @@ const MyCarousel = () => {
                     <img
                       src={randomCars[index]}
                       alt={`Random Car Rental ${index + 1}`}
-                      className="w-full md:w-1/2 object-cover"
+                      className="w-full md:w-1/3 object-cover"
                     />
                   )}
                   <div className="detials">

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Icons from '../Homepage/icons';
 
@@ -88,8 +87,8 @@ const Sidebar = () => {
   );
 };
 
-Sidebar.propTypes = {
-  onSidebarItemClick: PropTypes.func.isRequired,
-};
+// Sidebar.propTypes = {
+//   onSidebarItemClick: PropTypes.func.isRequired,
+// };
 
 export default Sidebar;
