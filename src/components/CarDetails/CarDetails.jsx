@@ -10,11 +10,11 @@ const CarDetailsComponent = ({
   addedby: initialAddedBy,
 }) => {
   const selectedCarId = localStorage.getItem('selectedCarId');
-  const handleReservation = () => {
-    const selectedCarId = localStorage.getItem('selectedCarId');
-    console.log('Selected Car ID:', selectedCarId);
-    // Do something with the selectedCarId
-  };
+  // const handleReservation = () => {
+  //   const selectedCarId = localStorage.getItem('selectedCarId');
+  //   // console.log('Selected Car ID:', selectedCarId);
+  //   // Do something with the selectedCarId
+  // };
 
   const [name, setName] = useState(initialName);
   const [description, setDescription] = useState(initialDescription);
@@ -76,11 +76,10 @@ const CarDetailsComponent = ({
           </table>
           <div className="text-2xl font-bold mb-6">5.9% APR Representative</div>
           <div className="flex justify-center lg:justify-start gap-4">
-            <Link to={`/reservation/${name}`} className="text-white">
+            <Link to="/reserve" className="text-white">
               <button
                 type="button"
                 className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full shadow-md"
-                onClick={handleReservation}
               >
                 Make Reservation
               </button>

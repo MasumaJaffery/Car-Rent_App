@@ -3,10 +3,10 @@ import backgroundImage from './reservationpage_bgimag.png';
 import CarSellingForm from '../forms/AddItemForm';
 
 const AdditemComponent = () => (
-  <div className="relative text-white p-8 h-screen">
+  <div className="relative text-white p-8 min-h-screen flex items-center justify-center">
     {/* Background image with overlay */}
     <div
-      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         // Add an empty alt attribute or a comment
@@ -18,8 +18,8 @@ const AdditemComponent = () => (
     </div>
 
     {/* Content container */}
-    <div className="relative z-10">
-      <h1 className="text-4xl font-bold mt-10 mb-4 mt-3">
+    <div className="relative z-10 text-center">
+      <h1 className="text-4xl font-bold mt-10 mb-4">
         Add your car with properties!
       </h1>
       <p className="mb-3 mt-10">
