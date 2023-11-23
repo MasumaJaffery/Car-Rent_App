@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Russo+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.logo {
+  margin-bottom: 50%;
+}
+
+.logo1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: x-large;
+  padding: 5%;
+}
+
+li {
+  width: 100%;
+  padding: 5%;
+}
+
+.list {
+  display: flex;
+  align-items: start;
+  padding: 5%;
+  font-size: larger;
+  font-weight: 700;
+  width: 100%;
+  color: #353535;
+}
+
+.list:hover,
+.list:active {
+  background-color: #98be11;
+  color: #fff;
+}
+
+.control-dots {
+  display: none;
+}
+
+.logos {
+  margin-top: 19vh;
+  gap: 5%;
+  font-size: large;
+  color: darkslategrey;
+}
+
+.copywrite {
+  font-size: small;
+  padding: 5%;
+}
+
+.Heading {
+  padding: 50px;
+}
+
+.mainh {
+  font-size: xx-large;
+  color: #353535;
+  font-weight: 800;
+}
+
+.secondaryh {
+  font-size: large;
+  font-weight: 700;
+  color: rgb(180, 180, 180);
+}
+
+.title {
+  font-size: large;
+  color: #353535;
+  font-weight: 700;
+}
+
+.logo2 {
+  border: 1px solid #b1a9a9;
+  border-radius: 50%;
+  padding: 2%;
+  font-size: medium;
+  color: #b1a9a9;
+}
+
+.logo_media {
+  gap: 2%;
+}
+
+.detials {
+  padding: 2%;
+}
+
+.control-next {
+  background: #98be11;
+  width: 10%;
+  height: 20%;
+  border-radius: 50% 0 0 50%;
+  position: absolute;
+  top: 4rem;
+}
+
+.control-prev {
+  width: 10%;
+  height: 20%;
+  border-radius: 0 50% 50% 0;
+}
+
+/* ///////// Sidebar style   /////////// */
+
+/*
+
+.sidebar {
+  height: 100vh;
+  border-right: 3px solid rgb(201, 201, 201);
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    transition: left 0.3s ease-in-out;
+
+    &.open {
+      left: 0;
+    }
+
+    .sidebar-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+
+      .list {
+        margin-bottom: 15px;
+      }
+    }
+
+    .logo1 {
+      display: none;
+    }
+  }
+}
+
+.hamburger-menu {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+  }
+}
+
+/* //////////=================/////////// */
+
+/* ///////// Form style     /////////// */
+
+/* ////////================/////////// */
+
+.add_item_submit_btn,
+.reserve_appointment_submit_btn {
+  background-color: #98be11 !important;
+}
+
+.visually-hidden {
+  display: none;
+}
+
+.flexx {
+  display: flex;
+  flex-direction: column;
+}
