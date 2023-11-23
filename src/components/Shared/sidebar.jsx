@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`sidebar h-[90vh] bg-gray-100 text-black ${
+      className={`sidebar h-[100vh] bg-gray-100 text-black ${
         isSidebarOpen ? 'open' : ''
       }`}
     >
