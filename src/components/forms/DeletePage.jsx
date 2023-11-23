@@ -18,7 +18,7 @@ const DeletePage = () => {
         setCarData(response.data);
         setRandomCars(generateRandomCars(response.data.length));
       } catch (error) {
-        console.error('Error fetch car data:', error);
+        console.error('Error fetching car data:', error);
       }
     };
 
