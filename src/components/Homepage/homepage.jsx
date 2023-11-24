@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from './carousel';
 
-function Home() {
+const Home = () => {
   return (
     <div className="App flex">
       <Carousel />

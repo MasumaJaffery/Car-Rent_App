@@ -1,7 +1,7 @@
 import React from 'react';
 import Reservecomponent from './reservecomponent';
 
-function Reservepage() {
+const Reservepage = () => {
   return (
     <div className="App flex">
       <Reservecomponent />
