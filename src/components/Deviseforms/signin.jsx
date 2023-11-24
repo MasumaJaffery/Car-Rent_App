@@ -48,7 +48,7 @@ const SignIn = () => {
 
   return (
     <div
-      className="bg-gray-100 min-h-screen flex items-center justify-center"
+      className="bg-gray-100 min-h-screen flexxx items-center justify-center"
       style={{
         backgroundImage: `url('${UI}')`,
         backgroundSize: 'cover',

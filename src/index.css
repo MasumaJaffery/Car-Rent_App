@@ -170,7 +170,11 @@ li {
   display: none;
 }
 
+.flexxx {
+  display: flex;
+  flex-direction: column !important;
+}
+
 .flexx {
   display: flex;
-  flex-direction: column;
 }
