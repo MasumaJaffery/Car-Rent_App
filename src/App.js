@@ -4,8 +4,6 @@ import SignInForm from './components/Deviseforms/signin';
 import SignUpForm from './components/Deviseforms/signup';
 import Homepage from './components/Homepage/homepage';
 import Splash from './components/Shared/splash';
-import Additempage from './components/Additempage/Additemcomponent';
-import CarDetailsPage from './components/CarDetails/cardetailspage';
 import Reservepage from './components/Reservepage/reservecomponent';
 import MyReservepage from './components/MyReservations/myreservepage';
 
