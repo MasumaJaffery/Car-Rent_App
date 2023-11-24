@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`sidebar h-[90vh] bg-gray-100 text-black ${
+      className={`sidebar h-[100vh] bg-gray-100 text-black ${
         isSidebarOpen ? 'open' : ''
       }`}
     >
@@ -78,11 +78,6 @@ const Sidebar = () => {
           >
             Reserve List
           </Link>
-        </li>
-        <li className="list">
-          <button type="button" onClick={handleHamburgerClick}>
-            Logout
-          </button>
         </li>
       </ul>
       <div className=" bottom-0 left-0 right-0 flex justify-end items-center p-4">
