@@ -46,8 +46,8 @@ Car Rent App of an application that created with react to work with rails applic
     <li><a href="https://react.dev">React</a></li>
   </ul>
 </details>
-### live demoe <a name="live"></a>
-[link](https://car-3wv0.onrender.com/)
+### Front end live demoe <a name="live"></a>
+(link)[https://car-3wv0.onrender.co]
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
