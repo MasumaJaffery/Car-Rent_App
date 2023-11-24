@@ -10,12 +10,6 @@ const CarDetailsComponent = ({
   addedby: initialAddedBy,
 }) => {
   const selectedCarId = localStorage.getItem('selectedCarId');
-  // const handleReservation = () => {
-  //   const selectedCarId = localStorage.getItem('selectedCarId');
-  //   // console.log('Selected Car ID:', selectedCarId);
-  //   // Do something with the selectedCarId
-  // };
-
   const [name, setName] = useState(initialName);
   const [description, setDescription] = useState(initialDescription);
   const [price, setPrice] = useState(initialPrice);

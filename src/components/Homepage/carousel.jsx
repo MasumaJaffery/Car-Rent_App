@@ -53,6 +53,26 @@ const MyCarousel = () => {
             dynamicHeight={false}
             centerMode
             centerSlidePercentage={40}
+            renderArrowPrev={(onClickHandler, hasPrev, label) => hasPrev && (
+            <button
+              type="button"
+              onClick={onClickHandler}
+              title={label}
+              className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            >
+              Previous
+            </button>
+            )}
+            renderArrowNext={(onClickHandler, hasNext, label) => hasNext && (
+            <button
+              type="button"
+              onClick={onClickHandler}
+              title={label}
+              className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            >
+              Next
+            </button>
+            )}
           >
             {carData.map((car, index) => (
               <div key={car.id}>

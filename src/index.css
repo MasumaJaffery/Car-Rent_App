@@ -178,3 +178,9 @@ li {
 .flexx {
   display: flex;
 }
+
+@media (max-width: 768px) {
+  .App {
+    padding: 1rem;
+  }
+}
