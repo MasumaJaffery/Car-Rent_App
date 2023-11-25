@@ -14,7 +14,7 @@ const ReservationForm = () => {
           car_id: null,
           date,
           city,
-        }
+        },
       );
       console.log(response.data); // Display the response from the backend
       // Reset the form
