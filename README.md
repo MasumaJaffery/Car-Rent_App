@@ -39,7 +39,7 @@ Car Rent App of an application that created with react to work with rails applic
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> So you want to lear more about the tech we have used for this project?
+So you want to lear more about the tech we have used for this project?
 
 <summary>Front-end</summary>
   <ul>
