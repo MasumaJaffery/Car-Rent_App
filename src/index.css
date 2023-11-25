@@ -106,55 +106,6 @@ li {
 
 /* ///////// Sidebar style   /////////// */
 
-/*
-
-.sidebar {
-  height: 100vh;
-  border-right: 3px solid rgb(201, 201, 201);
-
-  @media (max-width: 768px) {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100%;
-    width: 100%;
-    background-color: #fff;
-    transition: left 0.3s ease-in-out;
-
-    &.open {
-      left: 0;
-    }
-
-    .sidebar-menu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-
-      .list {
-        margin-bottom: 15px;
-      }
-    }
-
-    .logo1 {
-      display: none;
-    }
-  }
-}
-
-.hamburger-menu {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: block;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-  }
-}
-
 /* //////////=================/////////// */
 
 /* ///////// Form style     /////////// */
@@ -177,10 +128,4 @@ li {
 
 .flexx {
   display: flex;
-}
-
-@media (max-width: 768px) {
-  .App {
-    padding: 1rem;
-  }
 }
