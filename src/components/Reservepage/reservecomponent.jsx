@@ -4,7 +4,6 @@ import ReservationForm from '../forms/ReserveAppointmentForm';
 
 const ReserveComponent = () => (
   <div className="relative text-white p-8 min-h-screen flex items-center justify-center">
-    {/* Background image with overlay */}
     <div
       className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
       style={{
@@ -13,7 +12,6 @@ const ReserveComponent = () => (
         alt: '',
       }}
     >
-      {/* Overlay with opacity, adjust the color and opacity as needed */}
       <div className="absolute inset-0 bg-lime-400 opacity-50" />
     </div>
 
@@ -27,8 +25,6 @@ const ReserveComponent = () => (
       </p>
       <ReservationForm />
     </div>
-
-    {/* Form for new reservation booking goes here  */}
   </div>
 );
 
