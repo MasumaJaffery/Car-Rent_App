@@ -47,7 +47,7 @@ So you want to lear more about the tech we have used for this project?
   </ul>
 </details>
 ### Front end live demoe <a name="live"></a>
-(link)[https://car-3wv0.onrender.co]
+(link)[https://car-3wv0.onrender.com]
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
