@@ -79,6 +79,13 @@ const MyCarousel = () => {
           >
             {carData.map((car, index) => (
               <div key={car.id}>
+                {randomCars[index] && (
+                  <img
+                    src={randomCars[index]}
+                    alt={`Random Car Rental ${index + 1}`}
+                    className="w-full md:w-1/3 object-cover"
+                  />
+                )}
                 <div className="details">
                   <IconsCar />
                   <h5 className="title">{car.name}</h5>
@@ -93,13 +100,6 @@ const MyCarousel = () => {
                     </button>
                   </Link>
                 </div>
-                {randomCars[index] && (
-                  <img
-                    src={randomCars[index]}
-                    alt={`Random Car Rental ${index + 1}`}
-                    className="w-full md:w-1/3 object-cover"
-                  />
-                )}
               </div>
             ))}
           </Carousel>

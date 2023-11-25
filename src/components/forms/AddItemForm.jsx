@@ -8,12 +8,12 @@ const CarSellingForm = () => {
     return savedFormData
       ? JSON.parse(savedFormData)
       : {
-          name: '',
-          description: '',
-          price: '',
-          city: '',
-          image: '',
-        };
+        name: '',
+        description: '',
+        price: '',
+        city: '',
+        image: '',
+      };
   });
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const CarSellingForm = () => {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
-        }
+        },
       );
 
       console.log('Item created:', response.data);
