@@ -47,9 +47,11 @@ const DeletePage = () => {
   };
 
   return (
-    <div className="Heading">
-      <h1 className="mainh">Delete a car</h1>
-      <div className="w-[80vw] mx-auto">
+    <div>
+      <div className="Heading">
+        <h1 className="mainh">Delete a car</h1>
+      </div>
+      <div className="w-[75vw] h-[80vh] mx-auto">
         <div>
           <Carousel
             showArrows
@@ -75,7 +77,7 @@ const DeletePage = () => {
                 type="button"
                 onClick={onClickHandler}
                 title={label}
-                className={`absolute top-1/2 right-0 transform -translate-y-1/2 z-10 bg-gray-500 text-white px-4 py-2 rounded mt-4 ${
+                className={`absolute top-1/2 right-0 transform -translate-y-1/2 z-10 bg-gray-500 text-white px-4 py-2 rounded mt-4  ${
                   hasNext ? 'hover:bg-green-600' : ''
                 }`}
               >

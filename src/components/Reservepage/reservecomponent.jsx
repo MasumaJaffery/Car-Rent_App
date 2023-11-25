@@ -9,7 +9,7 @@ const ReserveComponent = () => (
       style={{
         backgroundImage: `url(${backgroundImage})`,
         // Add an empty alt attribute or a comment
-        alt: '',
+        alt: 'bg',
       }}
     >
       <div className="absolute inset-0 bg-lime-400 opacity-50" />
@@ -17,8 +17,8 @@ const ReserveComponent = () => (
 
     {/* Content container */}
     <div className="relative z-10 text-center">
-      <h1 className="text-4xl font-bold mb-4 mt-3">Reserve it!</h1>
-      <p className="mb-3 mt-10">
+      <h1 className="text-2xl ">Reserve it!</h1>
+      <p>
         There are 34 different cars in Super Cars of the Vespa. Today five
         categories are in display: the classic manual transmission and the
         modern CVT transmission S, LX, GT, and GTS.

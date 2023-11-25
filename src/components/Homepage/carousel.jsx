@@ -43,7 +43,7 @@ const MyCarousel = () => {
   return (
     <div>
       <Heading />
-      <div className="w-[80vw] mx-auto">
+      <div className="w-[75vw] h-[80vh] mx-auto">
         <div>
           <Carousel
             showArrows
