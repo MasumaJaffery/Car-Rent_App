@@ -201,10 +201,7 @@ I would like to thank Microverse and Murat Korkmaz.
 
 ## ❓ FAQ (OPTIONAL) <a name="faq"></a>
 
-> Learn more about FAQ below:
-
 - **feel free to ask question in issue part**
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
