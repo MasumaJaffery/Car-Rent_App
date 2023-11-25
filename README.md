@@ -53,6 +53,7 @@ Our Tech Stack:
 - **Include React**
 - **Include React dom**
 - **Include Redux**
+- **Include Redux Toolkit**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
