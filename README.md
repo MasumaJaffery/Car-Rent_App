@@ -187,8 +187,6 @@ Feel free to check the [issues page](https://github.com/MasumaJaffery/Car-Rent_A
 
 ## ⭐️ Show your support <a name="support"></a>
 
-> Would you like to help?
-
 If you like this project feel free to leave an star, as well if you have a suggestion feel free to visit issues page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
