@@ -49,7 +49,7 @@ Our Tech Stack:
 <a href="https://car-3wv0.onrender.com" >live demo</a>]
 ** Kanban board <a name="kanban"></a>**
 <a href="https://github.com/users/MasumaJaffery/projects/4/views/1">kanban board</a>
-In this team we are two people
+ and in this project we are two people
 
 ### Key Features <a name="key-features"></a>
 
