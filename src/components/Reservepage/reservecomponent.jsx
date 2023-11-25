@@ -1,6 +1,7 @@
 import React from 'react';
 import backgroundImage from './reservationpage_bgimag.png';
 import ReservationForm from '../forms/ReserveAppointmentForm';
+
 const ReserveComponent = () => (
   <div className="relative text-white p-8 min-h-screen flex items-center justify-center">
     <div

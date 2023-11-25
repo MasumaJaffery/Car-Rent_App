@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../images/LogoByM.png';
+
 const Splash = () => (
   <div className="flex justify-center items-center h-screen bg-neutral-50">
     <div className="flex flex-col items-center">
