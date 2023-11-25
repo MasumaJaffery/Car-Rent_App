@@ -49,7 +49,7 @@ const DeletePage = () => {
   return (
     <div className="Heading">
       <h1 className="mainh">Delete a car</h1>
-      <div className="w-[85vw] mx-auto">
+      <div className="w-[80vw] mx-auto">
         <div>
           <Carousel
             showArrows
@@ -58,6 +58,30 @@ const DeletePage = () => {
             dynamicHeight={false}
             centerMode
             centerSlidePercentage={40}
+            renderArrowPrev={(onClickHandler, hasPrev, label) => (
+              <button
+                type="button"
+                onClick={onClickHandler}
+                title={label}
+                className={`absolute top-1/2 left-0 transform -translate-y-1/2 z-10 bg-gray-500 text-white px-4 py-2 rounded mt-4 ${
+                  hasPrev ? 'hover:bg-green-600' : ''
+                }`}
+              >
+                &lt;
+              </button>
+            )}
+            renderArrowNext={(onClickHandler, hasNext, label) => (
+              <button
+                type="button"
+                onClick={onClickHandler}
+                title={label}
+                className={`absolute top-1/2 right-0 transform -translate-y-1/2 z-10 bg-gray-500 text-white px-4 py-2 rounded mt-4 ${
+                  hasNext ? 'hover:bg-green-600' : ''
+                }`}
+              >
+                &gt;
+              </button>
+            )}
           >
             {carData.map((car, index) => (
               <div key={car.id}>
@@ -68,7 +92,7 @@ const DeletePage = () => {
                     className="w-full md:w-1/2 object-cover"
                   />
                 )}
-                <div className="detials">
+                <div className="details">
                   <IconsCar />
                   <h5 className="title">{car.name}</h5>
                   <p>{car.description}</p>
