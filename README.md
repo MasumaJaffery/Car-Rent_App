@@ -201,7 +201,6 @@ I would like to thank Microverse and Murat Korkmaz.
 
 - **feel free to ask question in issue part**
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
