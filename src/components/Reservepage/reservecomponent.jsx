@@ -1,7 +1,6 @@
 import React from 'react';
 import backgroundImage from './reservationpage_bgimag.png';
 import ReservationForm from '../forms/ReserveAppointmentForm';
-
 const ReserveComponent = () => (
   <div className="relative text-white p-8 min-h-screen flex items-center justify-center">
     <div
@@ -14,8 +13,6 @@ const ReserveComponent = () => (
     >
       <div className="absolute inset-0 bg-lime-400 opacity-50" />
     </div>
-
-    {/* Content container */}
     <div className="relative z-10 text-center">
       <h1 className="text-2xl ">Reserve it!</h1>
       <p>
@@ -27,5 +24,4 @@ const ReserveComponent = () => (
     </div>
   </div>
 );
-
 export default ReserveComponent;
