@@ -38,7 +38,6 @@ const MyCarousel = () => {
 
   const handleReservation = (carId) => {
     localStorage.setItem('selectedCarId', carId);
-    // window.location.href = `/items/${carId}`;
   };
 
   return (
