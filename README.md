@@ -47,9 +47,9 @@ Our Tech Stack:
 </details>
 ### Front end live demoe <a name="live"></a>
 <a href="https://car-3wv0.onrender.com" >live demo</a>]
-### Kanban board <a name="kanban"></a>
+** Kanban board <a name="kanban"></a>**
 <a href="https://github.com/users/MasumaJaffery/projects/4/views/1">kanban board</a>
-- In this team we are two people
+In this team we are two people
 
 ### Key Features <a name="key-features"></a>
 
