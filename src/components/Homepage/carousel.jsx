@@ -53,41 +53,38 @@ const MyCarousel = () => {
             dynamicHeight={false}
             centerMode
             centerSlidePercentage={40}
-            renderArrowPrev={(onClickHandler, hasPrev, label) => hasPrev && (
-            <button
-              type="button"
-              onClick={onClickHandler}
-              title={label}
-              className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-            >
-              Previous
-            </button>
+            renderArrowPrev={(onClickHandler, hasPrev, label) => (
+              <button
+                type="button"
+                onClick={onClickHandler}
+                title={label}
+                className={`absolute top-1/2 left-0 transform -translate-y-1/2 z-10 bg-gray-500 text-white px-4 py-2 rounded mt-4 ${
+                  hasPrev ? 'hover:bg-green-600' : ''
+                }`}
+              >
+                &lt;
+              </button>
             )}
-            renderArrowNext={(onClickHandler, hasNext, label) => hasNext && (
-            <button
-              type="button"
-              onClick={onClickHandler}
-              title={label}
-              className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-            >
-              Next
-            </button>
+            renderArrowNext={(onClickHandler, hasNext, label) => (
+              <button
+                type="button"
+                onClick={onClickHandler}
+                title={label}
+                className={`absolute top-1/2 right-0 transform -translate-y-1/2 z-10 bg-gray-500 text-white px-4 py-2 rounded mt-4 ${
+                  hasNext ? 'hover:bg-green-600' : ''
+                }`}
+              >
+                &gt;
+              </button>
             )}
           >
             {carData.map((car, index) => (
               <div key={car.id}>
-                <Link to={`/car/${car.id}`}>
-                  {randomCars[index] && (
-                    <img
-                      src={randomCars[index]}
-                      alt={`Random Car Rental ${index + 1}`}
-                      className="w-full md:w-1/3 object-cover"
-                    />
-                  )}
-                  <div className="detials">
-                    <IconsCar />
-                    <h5 className="title">{car.name}</h5>
-                    <p>{car.description}</p>
+                <div className="details">
+                  <IconsCar />
+                  <h5 className="title">{car.name}</h5>
+                  <p>{car.description}</p>
+                  <Link to={`/car/${car.id}`}>
                     <button
                       type="button"
                       className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
@@ -95,8 +92,15 @@ const MyCarousel = () => {
                     >
                       Reserve
                     </button>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
+                {randomCars[index] && (
+                  <img
+                    src={randomCars[index]}
+                    alt={`Random Car Rental ${index + 1}`}
+                    className="w-full md:w-1/3 object-cover"
+                  />
+                )}
               </div>
             ))}
           </Carousel>
