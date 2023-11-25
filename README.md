@@ -50,6 +50,8 @@ Our Tech Stack:
 ** Kanban board <a name="kanban"></a>**
 <a href="https://github.com/users/MasumaJaffery/projects/4/views/1">kanban board</a>
  and in this project we are two people
+ ![image](https://github.com/MasumaJaffery/Car-Rent_App/assets/121656832/d6cbe726-208f-4dd2-8af2-8595810e43a3)
+
 
 ### Key Features <a name="key-features"></a>
 
