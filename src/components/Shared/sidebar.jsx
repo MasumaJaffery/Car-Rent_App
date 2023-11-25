@@ -87,8 +87,4 @@ const Sidebar = () => {
   );
 };
 
-// Sidebar.propTypes = {
-//   onSidebarItemClick: PropTypes.func.isRequired,
-// };
-
 export default Sidebar;
