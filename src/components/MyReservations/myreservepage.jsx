@@ -6,8 +6,3 @@ const MyReservepage = () => (
   </div>
 );
 export default MyReservepage;
-
-
-
-
-
