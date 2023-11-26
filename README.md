@@ -13,6 +13,8 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+    - [live demo](#live)
+    - [kanban board](#kanban)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -37,22 +39,32 @@ Car Rent App of an application that created with react to work with rails applic
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
-
-> So you want to lear more about the tech we have used for this project?
-
+Our Tech Stack:
 <summary>Front-end</summary>
   <ul>
     <li><a href="https://react.dev">React</a></li>
   </ul>
 </details>
+### Front end live demoe <a name="live"></a>
 
-<!-- Features -->
+<a href="https://car-3wv0.onrender.com" >live demo</a>]
+
+** Kanban board <a name="kanban"></a>** 
+
+<a href="https://github.com/users/MasumaJaffery/projects/4/views/1">kanban board</a>
+
+ In this project we are two people
+ 
+ ![image](https://github.com/MasumaJaffery/Car-Rent_App/assets/121656832/d6cbe726-208f-4dd2-8af2-8595810e43a3)
+
+<a href="https://github.com/MasumaJaffery/Car-Rent_App">GitHub repo link</a> 
 
 ### Key Features <a name="key-features"></a>
 
 - **Include React**
 - **Include React dom**
 - **Include Redux**
+- **Include Redux Toolkit**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -186,8 +198,6 @@ Feel free to check the [issues page](https://github.com/MasumaJaffery/Car-Rent_A
 
 ## ⭐️ Show your support <a name="support"></a>
 
-> Would you like to help?
-
 If you like this project feel free to leave an star, as well if you have a suggestion feel free to visit issues page.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -196,18 +206,11 @@ If you like this project feel free to leave an star, as well if you have a sugge
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse.
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+I would like to thank Microverse and Murat Korkmaz.
 
 ## ❓ FAQ (OPTIONAL) <a name="faq"></a>
 
-> Learn more about FAQ below:
-
 - **feel free to ask question in issue part**
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 
