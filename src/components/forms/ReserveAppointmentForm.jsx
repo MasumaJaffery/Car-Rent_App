@@ -25,8 +25,6 @@ const ReservationForm = () => {
     }
   };
   const getUserId = () => {
-    // Implement logic to get the user ID, e.g., from cookies or other state
-    // For example, if you have a cookie with the user ID:
     const userIdCookie = document.cookie
       .split('; ')
       .find((row) => row.startsWith('user_id='));

@@ -5,16 +5,13 @@ import Icons from '../Homepage/icons';
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
   const handleLogoClick = () => {};
-
   const handleHamburgerClick = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
   return (
     <div
-      className={`sidebar h-[100vh] bg-gray-100 text-black ${
+      className={`sidebar  bg-gray-100 text-black ${
         isSidebarOpen ? 'open' : ''
       }`}
     >
@@ -86,9 +83,4 @@ const Sidebar = () => {
     </div>
   );
 };
-
-// Sidebar.propTypes = {
-//   onSidebarItemClick: PropTypes.func.isRequired,
-// };
-
 export default Sidebar;
